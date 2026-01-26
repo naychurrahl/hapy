@@ -44,7 +44,7 @@
       135deg,
       var(--red-50) 0%,
       var(--red-100) 50%,
-      var(--red-500) 100%
+      var(--red-400) 100%
     );
   }
 
@@ -1303,6 +1303,7 @@
       const directors = [
         {
           id: 1,
+          image: "adeniyi_adebowale.jpg",
           name: "Mr. Adebowale Adeniyi Oluwagbenga",
           title: "Chairman/CEO, Hypertension Prevention Awareness (HYPA) Visionary Leader & Healthcare Advocate",
           bio: "Dr. Mitchell brings over 25 years of experience in international development and humanitarian work. Her leadership has guided the foundation through significant growth while maintaining our commitment to community-centered approaches.",
@@ -1321,7 +1322,8 @@
         },
         {
           id: 2,
-          name: "Michael Chen",
+          image: "chief_segun_obada.jpg",
+          name: "Chief Segun Obada",
           title: "Vice Chairperson",
           bio: "Michael is a serial entrepreneur and philanthropist dedicated to leveraging technology for social good. He founded three successful tech companies before joining our board.",
           education:
@@ -1338,7 +1340,8 @@
         },
         {
           id: 3,
-          name: "Amara Okafor",
+          image: "david_anifowose.jpg",
+          name: "David Anifowose",
           title: "Secretary",
           bio: "Amara is an accomplished attorney specializing in nonprofit law and human rights advocacy. Her expertise ensures our foundation operates with the highest standards of governance.",
           education:
@@ -1356,7 +1359,8 @@
         },
         {
           id: 4,
-          name: "James Wilson",
+          image: "martin_lateef_shehu.jpg",
+          name: "Martin Lateef Shehu",
           title: "Treasurer",
           bio: "James brings three decades of financial management experience from both corporate and nonprofit sectors. His financial acumen has strengthened our fiscal responsibility.",
           education:
@@ -1374,7 +1378,8 @@
         },
         {
           id: 5,
-          name: "Dr. Priya Sharma",
+          image: "mrs_kaliat_adeniyi.jpg",
+          name: "Mrs. Kaliat Adeniyi",
           title: "Director of Programs",
           bio: "Dr. Sharma is a renowned public health expert who has designed and implemented health programs across South Asia and Sub-Saharan Africa.",
           education:
@@ -1392,7 +1397,8 @@
         },
         {
           id: 6,
-          name: "Roberto Mendez",
+          image: "mr_adeyemi_megbuwaon.jpg",
+          name: "Mr. Adeyemi Megbuwaon",
           title: "Director of Operations",
           bio: "Roberto specializes in scaling humanitarian operations in challenging environments. His logistics expertise has been crucial to our disaster response capabilities.",
           education:
@@ -1461,14 +1467,11 @@
           .map(
             (director) => `
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden director-card cursor-pointer" onclick="openDirectorModal(${director.id})">
-          <div class="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
-            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-red-400 to-red-500 flex items-center justify-center text-white text-4xl font-heading font-bold shadow-lg">
-              ${director.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
-            </div>
-          </div>
+          <img src="./${director.image ?? 'img.jpg'}" alt="${director.name}" class="w-full object-cover"/>
+          <!--div class="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
+            <!- -div class="w-28 h-28 rounded-full bg-gradient-to-br from-red-400 to-red-500 flex items-center justify-center text-white text-4xl font-heading font-bold shadow-lg">
+            </div- ->
+          </div-->
           <div class="p-6 text-center">
             <h3 class="font-heading text-xl font-semibold text-gray-800">${director.name}</h3>
             <p class="text-red-600 font-medium mt-1">${director.title}</p>
@@ -1518,12 +1521,7 @@
         const modalContent = document.getElementById("modal-content");
         modalContent.innerHTML = `
         <div class="text-center mb-6">
-          <div class="w-32 h-32 rounded-full bg-gradient-to-br from-red-400 to-red-500 flex items-center justify-center text-white text-5xl font-heading font-bold mx-auto shadow-lg mb-4">
-            ${director.name
-              .split(" ")
-              .map((n) => n[0])
-              .join("")}
-          </div>
+          <img src="./${director.image ?? 'img.jpg'}" alt="${director.name}" class="w-full object-cover"/>
           <h2 class="font-heading text-2xl font-bold text-gray-800">${director.name}</h2>
           <p class="text-red-600 font-semibold">${director.title}</p>
         </div>
