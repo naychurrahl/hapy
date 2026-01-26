@@ -13,80 +13,120 @@
       rel="stylesheet"
     />
     <style>
-      body {
-        box-sizing: border-box;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      .font-heading {
-        font-family: "Playfair Display", Georgia, serif;
-      }
-      .font-body {
-        font-family: "Source Sans 3", system-ui, sans-serif;
-      }
-      .gradient-warm {
-        background: linear-gradient(
-          135deg,
-          #fff7ed 0%,
-          #e30c0c 50%
-          #d9871c 100%,
-        );
-      }
-      .card-hover {
-        transition: all 0.3s ease;
-      }
-      .card-hover:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 20px 40px rgba(234, 88, 12, 0.15);
-      }
-      .carousel-container {
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-      .carousel-container::-webkit-scrollbar {
-        display: none;
-      }
-      .director-card {
-        transition: all 0.3s ease;
-      }
-      .director-card:hover {
-        transform: scale(1.02);
-      }
-      .btn-primary {
-        background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
-        transition: all 0.3s ease;
-      }
-      .btn-primary:hover {
-        background: linear-gradient(135deg, #c2410c 0%, #9a3412 100%);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(234, 88, 12, 0.3);
-      }
-      .section-divider {
-        height: 4px;
-        background: linear-gradient(90deg, transparent, #fb923c, transparent);
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      .animate-fade-in {
-        animation: fadeIn 0.6s ease forwards;
-      }
-      .modal-backdrop {
-        background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(4px);
-      }
-    </style>
+  :root {
+    /* Red theme variables */
+    --red-50:  #fef2f2;
+    --red-100: #fee2e2;
+    --red-400: #f87171;
+    --red-500: #ef4444;
+    --red-600: #dc2626;
+    --red-700: #b91c1c;
+    --red-800: #991b1b;
+  }
+
+  body {
+    box-sizing: border-box;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .font-heading {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+  .font-body {
+    font-family: "Source Sans 3", system-ui, sans-serif;
+  }
+
+  .gradient-warm {
+    background: linear-gradient(
+      135deg,
+      var(--red-50) 0%,
+      var(--red-100) 50%,
+      var(--red-500) 100%
+    );
+  }
+
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15);
+  }
+
+  .carousel-container {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .carousel-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .director-card {
+    transition: all 0.3s ease;
+  }
+  .director-card:hover {
+    transform: scale(1.02);
+  }
+
+  .btn-primary {
+    background: linear-gradient(
+      135deg,
+      var(--red-600) 0%,
+      var(--red-700) 100%
+    );
+    transition: all 0.3s ease;
+  }
+  .btn-primary:hover {
+    background: linear-gradient(
+      135deg,
+      var(--red-700) 0%,
+      var(--red-800) 100%
+    );
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+  }
+
+  .section-divider {
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--red-400),
+      transparent
+    );
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease forwards;
+  }
+
+  .modal-backdrop {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+  }
+</style>
+
+<style>
+  @view-transition {
+    navigation: auto;
+  }
+</style>
+
     <style>
       @view-transition {
         navigation: auto;
@@ -102,7 +142,7 @@
           <div class="flex justify-between items-center h-16">
             <div class="flex items-center gap-3">
               <div
-                class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center"
+                class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center"
               >
                 <svg
                   class="w-6 h-6 text-white"
@@ -123,17 +163,17 @@
             <div class="hidden md:flex items-center gap-6">
               <a
                 href="#about"
-                class="text-gray-600 hover:text-orange-600 transition-colors font-medium"
+                class="text-gray-600 hover:text-red-600 transition-colors font-medium"
                 >About</a
               >
               <a
                 href="#leadership"
-                class="text-gray-600 hover:text-orange-600 transition-colors font-medium"
+                class="text-gray-600 hover:text-red-600 transition-colors font-medium"
                 >Leadership</a
               >
               <a
                 href="#projects"
-                class="text-gray-600 hover:text-orange-600 transition-colors font-medium"
+                class="text-gray-600 hover:text-red-600 transition-colors font-medium"
                 >Projects</a
               >
               <a
@@ -144,7 +184,7 @@
             </div>
             <button
               id="mobile-menu-btn"
-              class="md:hidden p-2 text-gray-600 hover:text-orange-600"
+              class="md:hidden p-2 text-gray-600 hover:text-red-600"
             >
               <svg
                 class="w-6 h-6"
@@ -167,20 +207,20 @@
           <div class="px-4 py-3 space-y-2">
             <a
               href="#about"
-              class="block py-2 text-gray-600 hover:text-orange-600"
+              class="block py-2 text-gray-600 hover:text-red-600"
               >About</a
             >
             <a
               href="#leadership"
-              class="block py-2 text-gray-600 hover:text-orange-600"
+              class="block py-2 text-gray-600 hover:text-red-600"
               >Leadership</a
             >
             <a
               href="#projects"
-              class="block py-2 text-gray-600 hover:text-orange-600"
+              class="block py-2 text-gray-600 hover:text-red-600"
               >Projects</a
             >
-            <a href="#involve" class="block py-2 text-orange-600 font-medium"
+            <a href="#involve" class="block py-2 text-red-600 font-medium"
               >Get Involved</a
             >
           </div>
@@ -208,7 +248,7 @@
           </h1>
           <p
             id="hero-tagline"
-            class="text-xl sm:text-2xl text-orange-700 font-medium mb-6 animate-fade-in"
+            class="text-xl sm:text-2xl text-red-700 font-medium mb-6 animate-fade-in"
             style="animation-delay: 0.1s"
           >
             Empowering Communities, Transforming Lives
@@ -236,7 +276,7 @@
             </a>
             <a
               href="#about"
-              class="bg-white text-orange-600 border-2 border-orange-500 px-8 py-3 rounded-full font-semibold text-lg hover:bg-orange-50 transition-colors inline-flex items-center justify-center gap-2"
+              class="bg-white text-red-600 border-2 border-red-500 px-8 py-3 rounded-full font-semibold text-lg hover:bg-red-50 transition-colors inline-flex items-center justify-center gap-2"
             >
               Learn More
               <svg
@@ -258,25 +298,25 @@
             class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto"
           >
             <div class="bg-white/80 rounded-2xl p-6 shadow-lg card-hover">
-              <div class="text-3xl font-bold text-orange-600 font-heading">
+              <div class="text-3xl font-bold text-red-600 font-heading">
                 50K+
               </div>
               <div class="text-gray-600 mt-1">Lives Impacted</div>
             </div>
             <div class="bg-white/80 rounded-2xl p-6 shadow-lg card-hover">
-              <div class="text-3xl font-bold text-orange-600 font-heading">
+              <div class="text-3xl font-bold text-red-600 font-heading">
                 120+
               </div>
               <div class="text-gray-600 mt-1">Projects</div>
             </div>
             <div class="bg-white/80 rounded-2xl p-6 shadow-lg card-hover">
-              <div class="text-3xl font-bold text-orange-600 font-heading">
+              <div class="text-3xl font-bold text-red-600 font-heading">
                 35
               </div>
               <div class="text-gray-600 mt-1">Countries</div>
             </div>
             <div class="bg-white/80 rounded-2xl p-6 shadow-lg card-hover">
-              <div class="text-3xl font-bold text-orange-600 font-heading">
+              <div class="text-3xl font-bold text-red-600 font-heading">
                 2K+
               </div>
               <div class="text-gray-600 mt-1">Volunteers</div>
@@ -290,7 +330,7 @@
         <div class="max-w-7xl mx-auto">
           <div class="text-center mb-12">
             <span
-              class="text-orange-600 font-semibold uppercase tracking-wider text-sm"
+              class="text-red-600 font-semibold uppercase tracking-wider text-sm"
               >Who We Are</span
             >
             <h2
@@ -327,10 +367,10 @@
               </div>
               <div class="relative">
                 <div
-                  class="bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl p-8 aspect-video flex items-center justify-center"
+                  class="bg-gradient-to-br from-red-100 to-red-200 rounded-2xl p-8 aspect-video flex items-center justify-center"
                 >
                   <svg
-                    class="w-32 h-32 text-orange-400"
+                    class="w-32 h-32 text-red-400"
                     fill="currentColor"
                     viewbox="0 0 24 24"
                   >
@@ -345,13 +385,13 @@
           <!-- Vision, Mission, Motto -->
           <div class="grid md:grid-cols-3 gap-6 mb-12">
             <div
-              class="bg-white rounded-2xl shadow-lg p-8 card-hover border-t-4 border-orange-500"
+              class="bg-white rounded-2xl shadow-lg p-8 card-hover border-t-4 border-red-500"
             >
               <div
-                class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-5"
+                class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-5"
               >
                 <svg
-                  class="w-7 h-7 text-orange-600"
+                  class="w-7 h-7 text-red-600"
                   fill="currentColor"
                   viewbox="0 0 24 24"
                 >
@@ -370,13 +410,13 @@
               </p>
             </div>
             <div
-              class="bg-white rounded-2xl shadow-lg p-8 card-hover border-t-4 border-orange-400"
+              class="bg-white rounded-2xl shadow-lg p-8 card-hover border-t-4 border-red-400"
             >
               <div
-                class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-5"
+                class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-5"
               >
                 <svg
-                  class="w-7 h-7 text-orange-600"
+                  class="w-7 h-7 text-red-600"
                   fill="currentColor"
                   viewbox="0 0 24 24"
                 >
@@ -395,13 +435,13 @@
               </p>
             </div>
             <div
-              class="bg-white rounded-2xl shadow-lg p-8 card-hover border-t-4 border-orange-300"
+              class="bg-white rounded-2xl shadow-lg p-8 card-hover border-t-4 border-red-300"
             >
               <div
-                class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-5"
+                class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-5"
               >
                 <svg
-                  class="w-7 h-7 text-orange-600"
+                  class="w-7 h-7 text-red-600"
                   fill="currentColor"
                   viewbox="0 0 24 24"
                 >
@@ -428,10 +468,10 @@
                 class="font-heading text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-3"
               >
                 <span
-                  class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center"
+                  class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center"
                 >
                   <svg
-                    class="w-5 h-5 text-orange-600"
+                    class="w-5 h-5 text-red-600"
                     fill="currentColor"
                     viewbox="0 0 24 24"
                   >
@@ -577,10 +617,10 @@
                 class="font-heading text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-3"
               >
                 <span
-                  class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center"
+                  class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center"
                 >
                   <svg
-                    class="w-5 h-5 text-orange-600"
+                    class="w-5 h-5 text-red-600"
                     fill="currentColor"
                     viewbox="0 0 24 24"
                   >
@@ -591,38 +631,38 @@
                 Core Values
               </h3>
               <div class="grid grid-cols-2 gap-4">
-                <div class="bg-orange-50 rounded-xl p-4">
-                  <div class="font-semibold text-orange-700 mb-1">
+                <div class="bg-red-50 rounded-xl p-4">
+                  <div class="font-semibold text-red-700 mb-1">
                     Community Empowerment
                   </div>
                 </div>
-                <div class="bg-orange-50 rounded-xl p-4">
-                  <div class="font-semibold text-orange-700 mb-1">
+                <div class="bg-red-50 rounded-xl p-4">
+                  <div class="font-semibold text-red-700 mb-1">
                     Health Equity
                   </div>
                 </div>
-                <div class="bg-orange-50 rounded-xl p-4">
-                  <div class="font-semibold text-orange-700 mb-1">
+                <div class="bg-red-50 rounded-xl p-4">
+                  <div class="font-semibold text-red-700 mb-1">
                     Collaboration
                   </div>
                 </div>
-                <div class="bg-orange-50 rounded-xl p-4">
-                  <div class="font-semibold text-orange-700 mb-1">
+                <div class="bg-red-50 rounded-xl p-4">
+                  <div class="font-semibold text-red-700 mb-1">
                     Innovation
                   </div>
                 </div>
-                <div class="bg-orange-50 rounded-xl p-4">
-                  <div class="font-semibold text-orange-700 mb-1">
+                <div class="bg-red-50 rounded-xl p-4">
+                  <div class="font-semibold text-red-700 mb-1">
                     Compassion
                   </div>
                 </div>
-                <div class="bg-orange-50 rounded-xl p-4">
-                  <div class="font-semibold text-orange-700 mb-1">
+                <div class="bg-red-50 rounded-xl p-4">
+                  <div class="font-semibold text-red-700 mb-1">
                     Transparency and Accountability
                   </div>
                 </div>
-                <div class="bg-orange-50 rounded-xl p-4">
-                  <div class="font-semibold text-orange-700 mb-1">
+                <div class="bg-red-50 rounded-xl p-4">
+                  <div class="font-semibold text-red-700 mb-1">
                     Sustainability
                   </div>
                 </div>
@@ -637,7 +677,7 @@
         <div class="max-w-7xl mx-auto">
           <div class="text-center mb-12">
             <span
-              class="text-orange-600 font-semibold uppercase tracking-wider text-sm"
+              class="text-red-600 font-semibold uppercase tracking-wider text-sm"
               >Meet Our Team</span
             >
             <h2
@@ -700,7 +740,7 @@
         <div class="max-w-7xl mx-auto">
           <div class="text-center mb-12">
             <span
-              class="text-orange-600 font-semibold uppercase tracking-wider text-sm"
+              class="text-red-600 font-semibold uppercase tracking-wider text-sm"
               >Our Impact</span
             >
             <h2
@@ -722,10 +762,10 @@
             </div>
             <button
               onclick="scrollCarousel(-1)"
-              class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-orange-50 transition-colors hidden md:flex"
+              class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-red-50 transition-colors hidden md:flex"
             >
               <svg
-                class="w-6 h-6 text-orange-600"
+                class="w-6 h-6 text-red-600"
                 fill="none"
                 stroke="currentColor"
                 viewbox="0 0 24 24"
@@ -740,10 +780,10 @@
             </button>
             <button
               onclick="scrollCarousel(1)"
-              class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-orange-50 transition-colors hidden md:flex"
+              class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-red-50 transition-colors hidden md:flex"
             >
               <svg
-                class="w-6 h-6 text-orange-600"
+                class="w-6 h-6 text-red-600"
                 fill="none"
                 stroke="currentColor"
                 viewbox="0 0 24 24"
@@ -765,7 +805,7 @@
         <div class="max-w-7xl mx-auto">
           <div class="text-center mb-12">
             <span
-              class="text-orange-600 font-semibold uppercase tracking-wider text-sm"
+              class="text-red-600 font-semibold uppercase tracking-wider text-sm"
               >Join Our Mission</span
             >
             <h2
@@ -783,10 +823,10 @@
             <div class="bg-white rounded-3xl shadow-xl p-8">
               <div class="flex items-center gap-4 mb-6">
                 <div
-                  class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center"
+                  class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center"
                 >
                   <svg
-                    class="w-7 h-7 text-orange-600"
+                    class="w-7 h-7 text-red-600"
                     fill="currentColor"
                     viewbox="0 0 24 24"
                   >
@@ -816,7 +856,7 @@
                       type="text"
                       id="vol-firstname"
                       required
-                      class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all"
+                      class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all"
                     />
                   </div>
                   <div>
@@ -829,7 +869,7 @@
                       type="text"
                       id="vol-lastname"
                       required
-                      class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all"
+                      class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all"
                     />
                   </div>
                 </div>
@@ -843,7 +883,7 @@
                     type="email"
                     id="vol-email"
                     required
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all"
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all"
                   />
                 </div>
                 <div>
@@ -855,7 +895,7 @@
                   <input
                     type="tel"
                     id="vol-phone"
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all"
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all"
                   />
                 </div>
                 <div>
@@ -867,7 +907,7 @@
                   <select
                     id="vol-interest"
                     required
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all bg-white"
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all bg-white"
                   >
                     <option value="">Select an area</option>
                     <option value="education">Education Programs</option>
@@ -888,7 +928,7 @@
                   <textarea
                     id="vol-message"
                     rows="3"
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none transition-all resize-none"
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all resize-none"
                   ></textarea>
                 </div>
                 <button
@@ -910,7 +950,7 @@
             <!-- Donate CTA -->
             <div class="flex flex-col gap-6">
               <div
-                class="bg-gradient-to-br from-orange-500 to-orange-600 rounded-3xl shadow-xl p-8 text-white flex-1"
+                class="bg-gradient-to-br from-red-500 to-red-600 rounded-3xl shadow-xl p-8 text-white flex-1"
               >
                 <div
                   class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6"
@@ -924,7 +964,7 @@
                 <h3 class="font-heading text-3xl font-bold mb-4">
                   Make a Donation
                 </h3>
-                <p class="text-orange-100 text-lg mb-8 leading-relaxed">
+                <p class="text-red-100 text-lg mb-8 leading-relaxed">
                   Your generosity powers our mission. Every contribution, big or
                   small, directly supports communities in need and helps create
                   lasting change.
@@ -961,12 +1001,12 @@
                     type="number"
                     id="custom-amount"
                     placeholder="Custom amount"
-                    class="flex-1 bg-white/20 rounded-xl px-4 py-3 text-white placeholder-orange-200 outline-none focus:bg-white/30 transition-colors"
+                    class="flex-1 bg-white/20 rounded-xl px-4 py-3 text-white placeholder-red-200 outline-none focus:bg-white/30 transition-colors"
                   />
                 </div>
                 <button
                   onclick="handleDonate()"
-                  class="w-full bg-white text-orange-600 py-4 rounded-xl font-bold text-lg hover:bg-orange-50 transition-colors"
+                  class="w-full bg-white text-red-600 py-4 rounded-xl font-bold text-lg hover:bg-red-50 transition-colors"
                 >
                   Donate Now →
                 </button>
@@ -988,7 +1028,7 @@
                 <div class="space-y-3">
                   <div class="flex items-center gap-3 text-gray-600">
                     <svg
-                      class="w-5 h-5 text-orange-500 flex-shrink-0"
+                      class="w-5 h-5 text-red-500 flex-shrink-0"
                       fill="currentColor"
                       viewbox="0 0 24 24"
                     >
@@ -999,7 +1039,7 @@
                   </div>
                   <div class="flex items-center gap-3 text-gray-600">
                     <svg
-                      class="w-5 h-5 text-orange-500 flex-shrink-0"
+                      class="w-5 h-5 text-red-500 flex-shrink-0"
                       fill="currentColor"
                       viewbox="0 0 24 24"
                     >
@@ -1010,7 +1050,7 @@
                   </div>
                   <div class="flex items-center gap-3 text-gray-600">
                     <svg
-                      class="w-5 h-5 text-orange-500 flex-shrink-0"
+                      class="w-5 h-5 text-red-500 flex-shrink-0"
                       fill="currentColor"
                       viewbox="0 0 24 24"
                     >
@@ -1032,7 +1072,7 @@
             <div>
               <div class="flex items-center gap-3 mb-4">
                 <div
-                  class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center"
+                  class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center"
                 >
                   <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
                     <path
@@ -1057,28 +1097,28 @@
                 <li>
                   <a
                     href="#about"
-                    class="hover:text-orange-400 transition-colors"
+                    class="hover:text-red-400 transition-colors"
                     >About Us</a
                   >
                 </li>
                 <li>
                   <a
                     href="#leadership"
-                    class="hover:text-orange-400 transition-colors"
+                    class="hover:text-red-400 transition-colors"
                     >Our Team</a
                   >
                 </li>
                 <li>
                   <a
                     href="#projects"
-                    class="hover:text-orange-400 transition-colors"
+                    class="hover:text-red-400 transition-colors"
                     >Projects</a
                   >
                 </li>
                 <li>
                   <a
                     href="#involve"
-                    class="hover:text-orange-400 transition-colors"
+                    class="hover:text-red-400 transition-colors"
                     >Get Involved</a
                   >
                 </li>
@@ -1089,7 +1129,7 @@
               <ul class="space-y-3 text-gray-400">
                 <li class="flex items-start gap-2">
                   <svg
-                    class="w-5 h-5 mt-0.5 text-orange-500 flex-shrink-0"
+                    class="w-5 h-5 mt-0.5 text-red-500 flex-shrink-0"
                     fill="currentColor"
                     viewbox="0 0 24 24"
                   >
@@ -1103,7 +1143,7 @@
                 </li>
                 <li class="flex items-center gap-2">
                   <svg
-                    class="w-5 h-5 text-orange-500 flex-shrink-0"
+                    class="w-5 h-5 text-red-500 flex-shrink-0"
                     fill="currentColor"
                     viewbox="0 0 24 24"
                   >
@@ -1114,7 +1154,7 @@
                 </li>
                 <li class="flex items-center gap-2">
                   <svg
-                    class="w-5 h-5 text-orange-500 flex-shrink-0"
+                    class="w-5 h-5 text-red-500 flex-shrink-0"
                     fill="currentColor"
                     viewbox="0 0 24 24"
                   >
@@ -1125,7 +1165,7 @@
                 </li>
                 <li class="flex items-center gap-2">
                   <svg
-                    class="w-5 h-5 text-orange-500 flex-shrink-0"
+                    class="w-5 h-5 text-red-500 flex-shrink-0"
                     fill="currentColor"
                     viewbox="0 0 24 24"
                   >
@@ -1141,7 +1181,7 @@
               <div class="flex gap-3">
                 <a
                   href="#"
-                  class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors"
+                  class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
                 >
                   <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
                     <path
@@ -1150,7 +1190,7 @@
                 ></a>
                 <a
                   href="#"
-                  class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors"
+                  class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
                 >
                   <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
                     <path
@@ -1159,7 +1199,7 @@
                 ></a>
                 <a
                   href="#"
-                  class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors"
+                  class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
                 >
                   <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
                     <path
@@ -1168,7 +1208,7 @@
                 ></a>
                 <a
                   href="#"
-                  class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors"
+                  class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
                 >
                   <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
                     <path
@@ -1183,11 +1223,11 @@
                     type="email"
                     placeholder="Your email"
                     required
-                    class="flex-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:border-orange-500 outline-none"
+                    class="flex-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:border-red-500 outline-none"
                   />
                   <button
                     type="submit"
-                    class="px-4 py-2 bg-orange-600 rounded-lg hover:bg-orange-700 transition-colors"
+                    class="px-4 py-2 bg-red-600 rounded-lg hover:bg-red-700 transition-colors"
                   >
                     <svg
                       class="w-5 h-5"
@@ -1220,13 +1260,13 @@
               © 2026 HYPA Nigeria. All rights reserved.
             </p>
             <div class="flex gap-6 text-gray-500 text-sm">
-              <a href="#" class="hover:text-orange-400 transition-colors"
+              <a href="#" class="hover:text-red-400 transition-colors"
                 >Privacy Policy</a
               >
-              <a href="#" class="hover:text-orange-400 transition-colors"
+              <a href="#" class="hover:text-red-400 transition-colors"
                 >Terms of Service</a
               >
-              <a href="#" class="hover:text-orange-400 transition-colors"
+              <a href="#" class="hover:text-red-400 transition-colors"
                 >Annual Report</a
               >
             </div>
@@ -1250,7 +1290,7 @@
         contact_phone: "+234 806 547 9422, +234 901 371 3197",
         contact_address:
           "Block C 33 unity road phase 4 Military housing eastern Kurudu FCT Abuja Nigeria",
-        primary_color: "#ea580c",
+        primary_color: "#e75c5c",
         secondary_color: "#fff7ed",
         text_color: "#1f2937",
         accent_color: "#c2410c",
@@ -1421,8 +1461,8 @@
           .map(
             (director) => `
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden director-card cursor-pointer" onclick="openDirectorModal(${director.id})">
-          <div class="h-48 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
-            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center text-white text-4xl font-heading font-bold shadow-lg">
+          <div class="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
+            <div class="w-28 h-28 rounded-full bg-gradient-to-br from-red-400 to-red-500 flex items-center justify-center text-white text-4xl font-heading font-bold shadow-lg">
               ${director.name
                 .split(" ")
                 .map((n) => n[0])
@@ -1431,9 +1471,9 @@
           </div>
           <div class="p-6 text-center">
             <h3 class="font-heading text-xl font-semibold text-gray-800">${director.name}</h3>
-            <p class="text-orange-600 font-medium mt-1">${director.title}</p>
+            <p class="text-red-600 font-medium mt-1">${director.title}</p>
             <p class="text-gray-500 text-sm mt-3 line-clamp-2">${director.bio.substring(0, 100)}...</p>
-            <button class="mt-4 text-orange-600 font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+            <button class="mt-4 text-red-600 font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
               View Profile
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -1458,7 +1498,7 @@
           <div class="p-6">
             <h3 class="font-heading text-xl font-semibold text-gray-800 mb-2">${project.title}</h3>
             <p class="text-gray-600 text-sm leading-relaxed">${project.description}</p>
-            <button class="mt-4 text-orange-600 font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+            <button class="mt-4 text-red-600 font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
               Learn More
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -1478,14 +1518,14 @@
         const modalContent = document.getElementById("modal-content");
         modalContent.innerHTML = `
         <div class="text-center mb-6">
-          <div class="w-32 h-32 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center text-white text-5xl font-heading font-bold mx-auto shadow-lg mb-4">
+          <div class="w-32 h-32 rounded-full bg-gradient-to-br from-red-400 to-red-500 flex items-center justify-center text-white text-5xl font-heading font-bold mx-auto shadow-lg mb-4">
             ${director.name
               .split(" ")
               .map((n) => n[0])
               .join("")}
           </div>
           <h2 class="font-heading text-2xl font-bold text-gray-800">${director.name}</h2>
-          <p class="text-orange-600 font-semibold">${director.title}</p>
+          <p class="text-red-600 font-semibold">${director.title}</p>
         </div>
         
         <div class="space-y-6">
@@ -1494,7 +1534,7 @@
               ? `
             <div>
               <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                 </svg>
                 Biography
@@ -1510,7 +1550,7 @@
               ? `
             <div>
               <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
                 </svg>
                 Education
@@ -1526,7 +1566,7 @@
               ? `
             <div>
               <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
                 </svg>
                 Experience
@@ -1542,7 +1582,7 @@
               ? `
             <div>
               <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
                 </svg>
                 Skills
@@ -1551,7 +1591,7 @@
                 ${director.skills
                   .map(
                     (skill) => `
-                  <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm">${skill}</span>
+                  <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm">${skill}</span>
                 `,
                   )
                   .join("")}
@@ -1564,14 +1604,14 @@
           ${
             director.impact
               ? `
-            <div class="bg-orange-50 rounded-xl p-4">
-              <h3 class="font-semibold text-orange-800 mb-2 flex items-center gap-2">
+            <div class="bg-red-50 rounded-xl p-4">
+              <h3 class="font-semibold text-red-800 mb-2 flex items-center gap-2">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
                 Impact
               </h3>
-              <p class="text-orange-700">${director.impact}</p>
+              <p class="text-red-700">${director.impact}</p>
             </div>
           `
               : ""
