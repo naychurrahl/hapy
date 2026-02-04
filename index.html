@@ -13,119 +13,119 @@
       rel="stylesheet"
     />
     <style>
-  :root {
-    /* Red theme variables */
-    --red-50:  #fef2f2;
-    --red-100: #fee2e2;
-    --red-400: #f87171;
-    --red-500: #ef4444;
-    --red-600: #dc2626;
-    --red-700: #b91c1c;
-    --red-800: #991b1b;
-  }
+      :root {
+        /* Red theme variables */
+        --red-50: #fef2f2;
+        --red-100: #fee2e2;
+        --red-400: #f87171;
+        --red-500: #ef4444;
+        --red-600: #dc2626;
+        --red-700: #b91c1c;
+        --red-800: #991b1b;
+      }
 
-  body {
-    box-sizing: border-box;
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  .font-heading {
-    font-family: "Playfair Display", Georgia, serif;
-  }
-  .font-body {
-    font-family: "Source Sans 3", system-ui, sans-serif;
-  }
+      body {
+        box-sizing: border-box;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .font-heading {
+        font-family: "Playfair Display", Georgia, serif;
+      }
+      .font-body {
+        font-family: "Source Sans 3", system-ui, sans-serif;
+      }
 
-  .gradient-warm {
-    background: linear-gradient(
-      135deg,
-      var(--red-50) 0%,
-      var(--red-100) 50%,
-      var(--red-400) 100%
-    );
-  }
+      .gradient-warm {
+        background: linear-gradient(
+          135deg,
+          var(--red-50) 0%,
+          var(--red-100) 50%,
+          var(--red-400) 100%
+        );
+      }
 
-  .card-hover {
-    transition: all 0.3s ease;
-  }
-  .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15);
-  }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15);
+      }
 
-  .carousel-container {
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .carousel-container::-webkit-scrollbar {
-    display: none;
-  }
+      .carousel-container {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .carousel-container::-webkit-scrollbar {
+        display: none;
+      }
 
-  .director-card {
-    transition: all 0.3s ease;
-  }
-  .director-card:hover {
-    transform: scale(1.02);
-  }
+      .director-card {
+        transition: all 0.3s ease;
+      }
+      .director-card:hover {
+        transform: scale(1.02);
+      }
 
-  .btn-primary {
-    background: linear-gradient(
-      135deg,
-      var(--red-600) 0%,
-      var(--red-700) 100%
-    );
-    transition: all 0.3s ease;
-  }
-  .btn-primary:hover {
-    background: linear-gradient(
-      135deg,
-      var(--red-700) 0%,
-      var(--red-800) 100%
-    );
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
-  }
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--red-600) 0%,
+          var(--red-700) 100%
+        );
+        transition: all 0.3s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(
+          135deg,
+          var(--red-700) 0%,
+          var(--red-800) 100%
+        );
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+      }
 
-  .section-divider {
-    height: 4px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--red-400),
-      transparent
-    );
-  }
+      .section-divider {
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--red-400),
+          transparent
+        );
+      }
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease forwards;
-  }
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease forwards;
+      }
 
-  .modal-backdrop {
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
-  }
-</style>
+      .modal-backdrop {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+      }
+    </style>
 
-<style>
-  @view-transition {
-    navigation: auto;
-  }
-</style>
+    <style>
+      @view-transition {
+        navigation: auto;
+      }
+    </style>
 
     <style>
       @view-transition {
@@ -205,9 +205,7 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
           <div class="px-4 py-3 space-y-2">
-            <a
-              href="#about"
-              class="block py-2 text-gray-600 hover:text-red-600"
+            <a href="#about" class="block py-2 text-gray-600 hover:text-red-600"
               >About</a
             >
             <a
@@ -226,6 +224,7 @@
           </div>
         </div>
       </nav>
+
       <!-- Hero Section -->
       <section class="relative py-20 lg:py-28 px-4 overflow-hidden">
         <div class="absolute inset-0 opacity-10">
@@ -257,7 +256,10 @@
             class="text-lg text-gray-600 max-w-2xl mx-auto mb-8 animate-fade-in"
             style="animation-delay: 0.2s"
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta illo omnis veritatis doloribus nisi quasi debitis suscipit quidem, labore totam eveniet adipisci officia veniam iure voluptas, rem voluptate fuga eum?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta illo
+            omnis veritatis doloribus nisi quasi debitis suscipit quidem, labore
+            totam eveniet adipisci officia veniam iure voluptas, rem voluptate
+            fuga eum?
           </p>
           <div
             class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in"
@@ -310,9 +312,7 @@
               <div class="text-gray-600 mt-1">Projects</div>
             </div>
             <div class="bg-white/80 rounded-2xl p-6 shadow-lg card-hover">
-              <div class="text-3xl font-bold text-red-600 font-heading">
-                35
-              </div>
+              <div class="text-3xl font-bold text-red-600 font-heading">35</div>
               <div class="text-gray-600 mt-1">Countries</div>
             </div>
             <div class="bg-white/80 rounded-2xl p-6 shadow-lg card-hover">
@@ -324,7 +324,9 @@
           </div>
         </div>
       </section>
+
       <div class="section-divider max-w-xs mx-auto"></div>
+
       <!-- About Section -->
       <section id="about" class="py-20 px-4">
         <div class="max-w-7xl mx-auto">
@@ -647,14 +649,10 @@
                   </div>
                 </div>
                 <div class="bg-red-50 rounded-xl p-4">
-                  <div class="font-semibold text-red-700 mb-1">
-                    Innovation
-                  </div>
+                  <div class="font-semibold text-red-700 mb-1">Innovation</div>
                 </div>
                 <div class="bg-red-50 rounded-xl p-4">
-                  <div class="font-semibold text-red-700 mb-1">
-                    Compassion
-                  </div>
+                  <div class="font-semibold text-red-700 mb-1">Compassion</div>
                 </div>
                 <div class="bg-red-50 rounded-xl p-4">
                   <div class="font-semibold text-red-700 mb-1">
@@ -671,7 +669,9 @@
           </div>
         </div>
       </section>
+
       <div class="section-divider max-w-xs mx-auto"></div>
+
       <!-- Leadership Section -->
       <section id="leadership" class="py-20 px-4 bg-white/50">
         <div class="max-w-7xl mx-auto">
@@ -698,6 +698,7 @@
           </div>
         </div>
       </section>
+
       <!-- Director Modal -->
       <div id="director-modal" class="fixed inset-0 z-50 hidden">
         <div
@@ -734,7 +735,44 @@
           </div>
         </div>
       </div>
+
+      <!-- Certificate Modal -->
+      <div id="certificate-modal" class="fixed inset-0 z-50 hidden">
+        <div
+          class="modal-backdrop absolute inset-0"
+          onclick="closeCertificateModal()"
+        ></div>
+
+        <div class="relative h-full flex items-center justify-center p-4">
+          <div
+            class="relative bg-white rounded-3xl shadow-2xl max-w-5xl w-full max-h-[95%] overflow-auto animate-fade-in"
+          >
+            <button
+              onclick="closeCertificateModal()"
+              class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-10"
+            >
+              ✕
+            </button>
+
+            <div class="p-6 text-center">
+              <h3
+                id="certificate-title"
+                class="font-heading text-2xl font-semibold text-gray-800 mb-4"
+              ></h3>
+
+              <img
+                id="certificate-image"
+                src=""
+                alt=""
+                class="mx-auto max-h-[80vh] object-contain rounded-xl"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="section-divider max-w-xs mx-auto"></div>
+
       <!-- Projects Section -->
       <section id="projects" class="py-20 px-4">
         <div class="max-w-7xl mx-auto">
@@ -799,7 +837,104 @@
           </div>
         </div>
       </section>
+
       <div class="section-divider max-w-xs mx-auto"></div>
+
+      <!-- Certificates Section -->
+      <section id="certificates" class="py-20 px-4 bg-white/50">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-12">
+            <span
+              class="text-red-600 font-semibold uppercase tracking-wider text-sm"
+            >
+              Accreditation & Recognition
+            </span>
+            <h2
+              class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 mt-2"
+            >
+              Our Certifications
+            </h2>
+            <p class="text-gray-600 mt-3 max-w-2xl mx-auto">
+              Official certifications that validate our credibility, compliance,
+              and commitment to public health impact.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div
+              class="bg-white rounded-2xl shadow-lg p-6 card-hover cursor-pointer"
+              onclick="
+                openCertificateModal(
+                  'img.jpg',
+                  'Certificate of Registration',
+                )
+              "
+            >
+              <img
+                src="img.jpg"
+                alt="HYPA Certificate 1"
+                class="rounded-xl w-full object-contain"
+              />
+              <p class="text-center text-gray-600 mt-4 font-medium">
+                Certificate of Registration
+              </p>
+            </div>
+
+            <div
+              class="bg-white rounded-2xl shadow-lg p-6 card-hover cursor-pointer"
+              onclick="
+                openCertificateModal(
+                  'img.jpg',
+                  'Certificate of Registration',
+                )
+              "
+            >
+              <img
+                src="img.jpg"
+                alt="HYPA Certificate 2"
+                class="rounded-xl w-full object-contain"
+              />
+              <p class="text-center text-gray-600 mt-4 font-medium">
+                Health Advocacy Accreditation
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider max-w-xs mx-auto"></div>
+
+      <!-- Partners Section -->
+      <section id="partners" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-12">
+            <span
+              class="text-red-600 font-semibold uppercase tracking-wider text-sm"
+            >
+              Collaboration
+            </span>
+            <h2
+              class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 mt-2"
+            >
+              Our Partners
+            </h2>
+            <p class="text-gray-600 mt-3 max-w-2xl mx-auto">
+              We work alongside trusted organizations and institutions to
+              amplify our impact nationwide.
+            </p>
+          </div>
+
+          <div
+            id="partners-grid"
+            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center"
+          >
+            <!-- Partners rendered via JS -->
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider max-w-xs mx-auto"></div>
+
       <!-- Get Involved Section -->
       <section id="involve" class="py-20 px-4 bg-white/50">
         <div class="max-w-7xl mx-auto">
@@ -1065,6 +1200,7 @@
           </div>
         </div>
       </section>
+
       <!-- Footer -->
       <footer class="bg-gray-900 text-white py-16 px-4">
         <div class="max-w-7xl mx-auto">
@@ -1095,9 +1231,7 @@
               <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
               <ul class="space-y-2 text-gray-400">
                 <li>
-                  <a
-                    href="#about"
-                    class="hover:text-red-400 transition-colors"
+                  <a href="#about" class="hover:text-red-400 transition-colors"
                     >About Us</a
                   >
                 </li>
@@ -1274,6 +1408,7 @@
         </div>
       </footer>
     </div>
+
     <script>
       // Default configuration
       const defaultConfig = {
@@ -1305,12 +1440,12 @@
           id: 1,
           image: "adeniyi_adebowale.jpg",
           name: "Mr. Adebowale Adeniyi Oluwagbenga",
-          title: "Chairman/CEO, Hypertension Prevention Awareness (HYPA) Visionary Leader & Healthcare Advocate",
+          title:
+            "Chairman/CEO, Hypertension Prevention Awareness (HYPA) Visionary Leader & Healthcare Advocate",
           bio: "Dr. Mitchell brings over 25 years of experience in international development and humanitarian work. Her leadership has guided the foundation through significant growth while maintaining our commitment to community-centered approaches.",
           education:
             "Ph.D. in International Development, Harvard University; M.A. in Public Policy, Georgetown University",
-          waed:
-            "Former Director of UNICEF East Africa; Board Member, World Health Organization; Consultant, Gates Foundation",
+          waed: "Former Director of UNICEF East Africa; Board Member, World Health Organization; Consultant, Gates Foundation",
           skills: [
             "Strategic Leadership",
             "Policy Development",
@@ -1460,6 +1595,30 @@
         },
       ];
 
+      // Partners data
+      const partners = [
+        {
+          name: "Federal Ministry of Health",
+          logo: "img.jpg",
+        },
+        {
+          name: "World Health Organization",
+          logo: "img.jpg",
+        },
+        {
+          name: "NCDC",
+          logo: "img.jpg",
+        },
+        {
+          name: "UNICEF",
+          logo: "img.jpg",
+        },
+        {
+          name: "Red Cross Nigeria",
+          logo: "img.jpg",
+        },
+      ];
+
       // Render functions
       function renderDirectors() {
         const grid = document.getElementById("directors-grid");
@@ -1467,7 +1626,7 @@
           .map(
             (director) => `
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden director-card cursor-pointer" onclick="openDirectorModal(${director.id})">
-          <img src="./${director.image ?? 'img.jpg'}" alt="${director.name}" class="w-full object-cover"/>
+          <img src="./${director.image ?? "img.jpg"}" alt="${director.name}" class="w-full object-cover"/>
           <!--div class="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
             <!- -div class="w-28 h-28 rounded-full bg-gradient-to-br from-red-400 to-red-500 flex items-center justify-center text-white text-4xl font-heading font-bold shadow-lg">
             </div- ->
@@ -1521,7 +1680,7 @@
         const modalContent = document.getElementById("modal-content");
         modalContent.innerHTML = `
         <div class="text-center mb-6">
-          <img src="./${director.image ?? 'img.jpg'}" alt="${director.name}" class="w-full object-cover"/>
+          <img src="./${director.image ?? "img.jpg"}" alt="${director.name}" class="w-full object-cover"/>
           <h2 class="font-heading text-2xl font-bold text-gray-800">${director.name}</h2>
           <p class="text-red-600 font-semibold">${director.title}</p>
         </div>
@@ -1635,6 +1794,25 @@
         });
       }
 
+      function openCertificateModal(imageSrc, title) {
+        const modal = document.getElementById("certificate-modal");
+        const img = document.getElementById("certificate-image");
+        const heading = document.getElementById("certificate-title");
+
+        img.src = imageSrc;
+        img.alt = title;
+        heading.textContent = title;
+
+        modal.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeCertificateModal() {
+        const modal = document.getElementById("certificate-modal");
+        modal.classList.add("hidden");
+        document.body.style.overflow = "";
+      }
+
       // Donation handling
       let selectedAmount = 0;
 
@@ -1698,6 +1876,29 @@
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") closeDirectorModal();
       });
+
+      const partnersGrid = document.getElementById("partners-grid");
+
+      if (partnersGrid) {
+        partners.forEach((partner) => {
+          const card = document.createElement("div");
+          card.className =
+            "bg-white rounded-xl shadow-md p-4 flex flex-col items-center justify-center card-hover grayscale hover:grayscale-0 transition-all";
+
+          card.innerHTML = `
+            <img
+              src="${partner.logo}"
+              alt="${partner.name}"
+              class="h-16 object-contain mb-3"
+            />
+            <div class="text-sm text-gray-600 text-center font-medium">
+              ${partner.name}
+            </div>
+          `;
+
+          partnersGrid.appendChild(card);
+        });
+      }
 
       // Config change handler
       async function onConfigChange(config) {
@@ -1817,6 +2018,7 @@
       renderProjects();
       onConfigChange(defaultConfig);
     </script>
+
     <script>
       (function () {
         function c() {
