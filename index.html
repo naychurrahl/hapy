@@ -1,377 +1,288 @@
 <!doctype html>
 <html lang="en" class="h-full">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HYPA</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/_sdk/element_sdk.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Source+Sans+3:wght@300;400;500;600&amp;display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        /* Red theme variables */
-        --red-50: #fef2f2;
-        --red-100: #fee2e2;
-        --red-400: #f87171;
-        --red-500: #ef4444;
-        --red-600: #dc2626;
-        --red-700: #b91c1c;
-        --red-800: #991b1b;
-      }
 
-      body {
-        box-sizing: border-box;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      .font-heading {
-        font-family: "Playfair Display", Georgia, serif;
-      }
-      .font-body {
-        font-family: "Source Sans 3", system-ui, sans-serif;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYPA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Source+Sans+3:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      /* Red theme variables */
+      --red-50: #fef2f2;
+      --red-100: #fee2e2;
+      --red-400: #f87171;
+      --red-500: #ef4444;
+      --red-600: #dc2626;
+      --red-700: #b91c1c;
+      --red-800: #991b1b;
+    }
 
-      .gradient-warm {
-        background: linear-gradient(
-          135deg,
+    a body {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .font-heading {
+      font-family: "Playfair Display", Georgia, serif;
+    }
+
+    .font-body {
+      font-family: "Source Sans 3", system-ui, sans-serif;
+    }
+
+    .gradient-warm {
+      background: linear-gradient(135deg,
           var(--red-50) 0%,
           var(--red-100) 50%,
-          var(--red-400) 100%
-        );
-      }
+          var(--red-400) 100%);
+    }
 
-      .card-hover {
-        transition: all 0.3s ease;
-      }
-      .card-hover:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15);
-      }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
 
-      .carousel-container {
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-      .carousel-container::-webkit-scrollbar {
-        display: none;
-      }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15);
+    }
 
-      .director-card {
-        transition: all 0.3s ease;
-      }
-      .director-card:hover {
-        transform: scale(1.02);
-      }
+    .carousel-container {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
 
-      .btn-primary {
-        background: linear-gradient(
-          135deg,
+    .carousel-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .director-card {
+      transition: all 0.3s ease;
+    }
+
+    .director-card:hover {
+      transform: scale(1.02);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg,
           var(--red-600) 0%,
-          var(--red-700) 100%
-        );
-        transition: all 0.3s ease;
-      }
-      .btn-primary:hover {
-        background: linear-gradient(
-          135deg,
-          var(--red-700) 0%,
-          var(--red-800) 100%
-        );
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
-      }
+          var(--red-700) 100%);
+      transition: all 0.3s ease;
+    }
 
-      .section-divider {
-        height: 4px;
-        background: linear-gradient(
-          90deg,
+    .btn-primary:hover {
+      background: linear-gradient(135deg,
+          var(--red-700) 0%,
+          var(--red-800) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+    }
+
+    .section-divider {
+      height: 4px;
+      background: linear-gradient(90deg,
           transparent,
           var(--red-400),
-          transparent
-        );
+          transparent);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
+    }
 
-      .animate-fade-in {
-        animation: fadeIn 0.6s ease forwards;
-      }
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease forwards;
+    }
 
-      .modal-backdrop {
-        background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(4px);
-      }
-    </style>
+    .modal-backdrop {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+    }
+  </style>
 
-    <style>
-      @view-transition {
-        navigation: auto;
-      }
-    </style>
+  <style>
+    @view-transition {
+      navigation: auto;
+    }
+  </style>
 
-    <style>
-      @view-transition {
-        navigation: auto;
-      }
-    </style>
-    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  </head>
-  <body class="h-full font-body">
-    <div id="app-wrapper" class="w-full h-full overflow-auto gradient-warm">
-      <!-- Navigation -->
-      <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex justify-between items-center h-16">
-            <div class="flex items-center gap-3">
+  <style>
+    @view-transition {
+      navigation: auto;
+    }
+  </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+</head>
+
+<body class="h-full font-body">
+  <div id="app-wrapper" class="w-full h-full overflow-auto gradient-warm">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewbox="0 0 24 24">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+              </svg>
+            </div>
+            <span id="nav-org-name" class="font-heading text-xl font-semibold text-gray-800">HYPA Nigeria</span>
+          </div>
+          <div class="hidden md:flex items-center gap-6">
+            <a href="#about" class="text-gray-600 hover:text-red-600 transition-colors font-medium">About</a>
+            <a href="#leadership" class="text-gray-600 hover:text-red-600 transition-colors font-medium">Leadership</a>
+            <a href="#projects" class="text-gray-600 hover:text-red-600 transition-colors font-medium">Projects</a>
+            <a href="#involve" class="btn-primary text-white px-5 py-2 rounded-full font-medium">Get Involved</a>
+          </div>
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 hover:text-red-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+        <div class="px-4 py-3 space-y-2">
+          <a href="#about" class="block py-2 text-gray-600 hover:text-red-600">About</a>
+          <a href="#leadership" class="block py-2 text-gray-600 hover:text-red-600">Leadership</a>
+          <a href="#projects" class="block py-2 text-gray-600 hover:text-red-600">Projects</a>
+          <a href="#involve" class="block py-2 text-red-600 font-medium">Get Involved</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-20 lg:py-28 px-4 overflow-hidden">
+      <div class="absolute inset-0 opacity-10">
+        <svg class="w-full h-full" viewbox="0 0 100 100" preserveaspectratio="none">
+          <circle cx="80" cy="20" r="30" fill="#ea580c" />
+          <circle cx="20" cy="80" r="25" fill="#fb923c" />
+          <circle cx="90" cy="70" r="15" fill="#fdba74" />
+        </svg>
+      </div>
+      <div class="max-w-7xl mx-auto text-center relative">
+        <h1 id="hero-org-name"
+          class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 mb-4 animate-fade-in">
+          Hypertension Awareness and Prevention Initiative
+        </h1>
+        <p id="hero-tagline" class="text-xl sm:text-2xl text-red-700 font-medium mb-6 animate-fade-in"
+          style="animation-delay: 0.1s">
+          Empowering Communities, Transforming Lives
+        </p>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8 animate-fade-in" style="animation-delay: 0.2s">
+          Hypertension Awareness and Prevention Initiative (HYPA) Nigeria is dedicated to reducing hypertension in
+          Nigeria through
+          awareness, prevention, early detection, and community health empowerment, promoting healthier lives and
+          stronger primary
+          healthcare systems.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style="animation-delay: 0.3s">
+          <a href="#involve"
+            class="btn-primary text-white px-8 py-3 rounded-full font-semibold text-lg inline-flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+            Donate Now
+          </a>
+          <a href="#about"
+            class="bg-white text-red-600 border-2 border-red-500 px-8 py-3 rounded-full font-semibold text-lg hover:bg-red-50 transition-colors inline-flex items-center justify-center gap-2">
+            Learn More
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg></a>
+        </div>
+        <!-- Impact Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto">
+          <div class="bg-white/80 rounded-2xl p-6 shadow-lg card-hover">
+            <div class="text-3xl font-bold text-red-600 font-heading">
+              50K+
+            </div>
+            <div class="text-gray-600 mt-1">Lives Impacted</div>
+          </div>
+          <div class="bg-white/80 rounded-2xl p-6 shadow-lg card-hover">
+            <div class="text-3xl font-bold text-red-600 font-heading">
+              120+
+            </div>
+            <div class="text-gray-600 mt-1">Projects</div>
+          </div>
+          <div class="bg-white/80 rounded-2xl p-6 shadow-lg card-hover">
+            <div class="text-3xl font-bold text-red-600 font-heading">35</div>
+            <div class="text-gray-600 mt-1">Countries</div>
+          </div>
+          <div class="bg-white/80 rounded-2xl p-6 shadow-lg card-hover">
+            <div class="text-3xl font-bold text-red-600 font-heading">
+              2K+
+            </div>
+            <div class="text-gray-600 mt-1">Volunteers</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider max-w-xs mx-auto"></div>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-red-600 font-semibold uppercase tracking-wider text-sm">Who We Are</span>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 mt-2">
+            Our Story &amp; Values
+          </h2>
+        </div>
+        <!-- Company Profile -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 lg:p-12 mb-12">
+          <div class="grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 class="font-heading text-2xl font-semibold text-gray-800 mb-4">
+                Company Profile
+              </h3>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                Hypertension Awareness and Prevention Initiative (HYPA)
+                Nigeria is a non-governmental organization registered in 2025,
+                dedicated to combating hypertension, a major public health
+                challenge affecting over 30% of Nigerian adults. As a new
+                entity, HYPA Nigeria is poised to contribute to President Bola
+                Tinubu’s Renewed Hope Agenda by promoting healthy lifestyles
+                and living, reducing the burden of hypertension through
+                awareness, prevention, and community empowerment.
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                Our initiatives focus on early detection, education, and
+                strengthening primary healthcare systems to address the low
+                awareness (29%), treatment (12%), and control (2.8%) rates
+                reported in Nigeria.
+              </p>
+            </div>
+            <div class="relative">
               <div
-                class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center"
-              >
-                <svg
-                  class="w-6 h-6 text-white"
-                  fill="currentColor"
-                  viewbox="0 0 24 24"
-                >
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                  />
-                </svg>
-              </div>
-              <span
-                id="nav-org-name"
-                class="font-heading text-xl font-semibold text-gray-800"
-                >HYPA Nigeria</span
-              >
-            </div>
-            <div class="hidden md:flex items-center gap-6">
-              <a
-                href="#about"
-                class="text-gray-600 hover:text-red-600 transition-colors font-medium"
-                >About</a
-              >
-              <a
-                href="#leadership"
-                class="text-gray-600 hover:text-red-600 transition-colors font-medium"
-                >Leadership</a
-              >
-              <a
-                href="#projects"
-                class="text-gray-600 hover:text-red-600 transition-colors font-medium"
-                >Projects</a
-              >
-              <a
-                href="#involve"
-                class="btn-primary text-white px-5 py-2 rounded-full font-medium"
-                >Get Involved</a
-              >
-            </div>
-            <button
-              id="mobile-menu-btn"
-              class="md:hidden p-2 text-gray-600 hover:text-red-600"
-            >
-              <svg
-                class="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewbox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-          <div class="px-4 py-3 space-y-2">
-            <a href="#about" class="block py-2 text-gray-600 hover:text-red-600"
-              >About</a
-            >
-            <a
-              href="#leadership"
-              class="block py-2 text-gray-600 hover:text-red-600"
-              >Leadership</a
-            >
-            <a
-              href="#projects"
-              class="block py-2 text-gray-600 hover:text-red-600"
-              >Projects</a
-            >
-            <a href="#involve" class="block py-2 text-red-600 font-medium"
-              >Get Involved</a
-            >
-          </div>
-        </div>
-      </nav>
-
-      <!-- Hero Section -->
-      <section class="relative py-20 lg:py-28 px-4 overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-          <svg
-            class="w-full h-full"
-            viewbox="0 0 100 100"
-            preserveaspectratio="none"
-          >
-            <circle cx="80" cy="20" r="30" fill="#ea580c" />
-            <circle cx="20" cy="80" r="25" fill="#fb923c" />
-            <circle cx="90" cy="70" r="15" fill="#fdba74" />
-          </svg>
-        </div>
-        <div class="max-w-7xl mx-auto text-center relative">
-          <h1
-            id="hero-org-name"
-            class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 mb-4 animate-fade-in"
-          >
-            Hypertension Awareness and Prevention Initiative
-          </h1>
-          <p
-            id="hero-tagline"
-            class="text-xl sm:text-2xl text-red-700 font-medium mb-6 animate-fade-in"
-            style="animation-delay: 0.1s"
-          >
-            Empowering Communities, Transforming Lives
-          </p>
-          <p
-            class="text-lg text-gray-600 max-w-2xl mx-auto mb-8 animate-fade-in"
-            style="animation-delay: 0.2s"
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta illo
-            omnis veritatis doloribus nisi quasi debitis suscipit quidem, labore
-            totam eveniet adipisci officia veniam iure voluptas, rem voluptate
-            fuga eum?
-          </p>
-          <div
-            class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in"
-            style="animation-delay: 0.3s"
-          >
-            <a
-              href="#involve"
-              class="btn-primary text-white px-8 py-3 rounded-full font-semibold text-lg inline-flex items-center justify-center gap-2"
-            >
-              <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
-                <path
-                  d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                />
-              </svg>
-              Donate Now
-            </a>
-            <a
-              href="#about"
-              class="bg-white text-red-600 border-2 border-red-500 px-8 py-3 rounded-full font-semibold text-lg hover:bg-red-50 transition-colors inline-flex items-center justify-center gap-2"
-            >
-              Learn More
-              <svg
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewbox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                /></svg
-            ></a>
-          </div>
-          <!-- Impact Stats -->
-          <div
-            class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto"
-          >
-            <div class="bg-white/80 rounded-2xl p-6 shadow-lg card-hover">
-              <div class="text-3xl font-bold text-red-600 font-heading">
-                50K+
-              </div>
-              <div class="text-gray-600 mt-1">Lives Impacted</div>
-            </div>
-            <div class="bg-white/80 rounded-2xl p-6 shadow-lg card-hover">
-              <div class="text-3xl font-bold text-red-600 font-heading">
-                120+
-              </div>
-              <div class="text-gray-600 mt-1">Projects</div>
-            </div>
-            <div class="bg-white/80 rounded-2xl p-6 shadow-lg card-hover">
-              <div class="text-3xl font-bold text-red-600 font-heading">35</div>
-              <div class="text-gray-600 mt-1">Countries</div>
-            </div>
-            <div class="bg-white/80 rounded-2xl p-6 shadow-lg card-hover">
-              <div class="text-3xl font-bold text-red-600 font-heading">
-                2K+
-              </div>
-              <div class="text-gray-600 mt-1">Volunteers</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="section-divider max-w-xs mx-auto"></div>
-
-      <!-- About Section -->
-      <section id="about" class="py-20 px-4">
-        <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-12">
-            <span
-              class="text-red-600 font-semibold uppercase tracking-wider text-sm"
-              >Who We Are</span
-            >
-            <h2
-              class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 mt-2"
-            >
-              Our Story &amp; Values
-            </h2>
-          </div>
-          <!-- Company Profile -->
-          <div class="bg-white rounded-3xl shadow-xl p-8 lg:p-12 mb-12">
-            <div class="grid lg:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3
-                  class="font-heading text-2xl font-semibold text-gray-800 mb-4"
-                >
-                  Company Profile
-                </h3>
-                <p class="text-gray-600 leading-relaxed mb-4">
-                  Hypertension Awareness and Prevention Initiative (HAPI)
-                  Nigeria is a non-governmental organization registered in 2025,
-                  dedicated to combating hypertension, a major public health
-                  challenge affecting over 30% of Nigerian adults. As a new
-                  entity, HAPI Nigeria is poised to contribute to President Bola
-                  Tinubu’s Renewed Hope Agenda by promoting healthy lifestyles
-                  and living, reducing the burden of hypertension through
-                  awareness, prevention, and community empowerment.
-                </p>
-                <p class="text-gray-600 leading-relaxed">
-                  Our initiatives focus on early detection, education, and
-                  strengthening primary healthcare systems to address the low
-                  awareness (29%), treatment (12%), and control (2.8%) rates
-                  reported in Nigeria.
-                </p>
-              </div>
-              <div class="relative">
-                <div
-                  class="bg-gradient-to-br from-red-100 to-red-200 rounded-2xl p-8 aspect-video flex items-center justify-center"
-                >
-                  <svg
+                class="bg-gradient-to-br from-red-100 to-red-200 rounded-2xl p-8 aspect-video flex items-center justify-center">
+                <!--svg
                     class="w-32 h-32 text-red-400"
                     fill="currentColor"
                     viewbox="0 0 24 24"
@@ -379,1252 +290,870 @@
                     <path
                       d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
                     />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Vision, Mission, Motto -->
-          <div class="grid md:grid-cols-3 gap-6 mb-12">
-            <div
-              class="bg-white rounded-2xl shadow-lg p-8 card-hover border-t-4 border-red-500"
-            >
-              <div
-                class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-5"
-              >
-                <svg
-                  class="w-7 h-7 text-red-600"
-                  fill="currentColor"
-                  viewbox="0 0 24 24"
-                >
-                  <path
-                    d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
-                  />
-                </svg>
-              </div>
-              <h3 class="font-heading text-xl font-semibold text-gray-800 mb-3">
-                Our Vision
-              </h3>
-              <p id="vision-text" class="text-gray-600 leading-relaxed">
-                A world where every individual has access to quality education,
-                healthcare, and economic opportunities, enabling them to reach
-                their full potential and contribute to their communities.
-              </p>
-            </div>
-            <div
-              class="bg-white rounded-2xl shadow-lg p-8 card-hover border-t-4 border-red-400"
-            >
-              <div
-                class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-5"
-              >
-                <svg
-                  class="w-7 h-7 text-red-600"
-                  fill="currentColor"
-                  viewbox="0 0 24 24"
-                >
-                  <path
-                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
-                  />
-                </svg>
-              </div>
-              <h3 class="font-heading text-xl font-semibold text-gray-800 mb-3">
-                Our Mission
-              </h3>
-              <p id="mission-text" class="text-gray-600 leading-relaxed">
-                To empower underserved communities through sustainable programs
-                in education, healthcare, and economic development, creating
-                lasting change through partnership, innovation, and compassion.
-              </p>
-            </div>
-            <div
-              class="bg-white rounded-2xl shadow-lg p-8 card-hover border-t-4 border-red-300"
-            >
-              <div
-                class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-5"
-              >
-                <svg
-                  class="w-7 h-7 text-red-600"
-                  fill="currentColor"
-                  viewbox="0 0 24 24"
-                >
-                  <path
-                    d="M20.5 6c-2.61.7-5.67 1-8.5 1s-5.89-.3-8.5-1L3 8c1.86.5 4 .83 6 1v13h2v-6h2v6h2V9c2-.17 4.14-.5 6-1l-.5-2zM12 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"
-                  />
-                </svg>
-              </div>
-              <h3 class="font-heading text-xl font-semibold text-gray-800 mb-3">
-                Our Motto
-              </h3>
-              <p
-                id="motto-text"
-                class="text-gray-600 leading-relaxed italic text-lg"
-              >
-                "Healthy Living, Stronger Nigeria"
-              </p>
-            </div>
-          </div>
-          <!-- Objectives & Core Values -->
-          <div class="grid lg:grid-cols-2 gap-8">
-            <div class="bg-white rounded-2xl shadow-lg p-8">
-              <h3
-                class="font-heading text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-3"
-              >
-                <span
-                  class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center"
-                >
-                  <svg
-                    class="w-5 h-5 text-red-600"
-                    fill="currentColor"
-                    viewbox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"
-                    /></svg
-                ></span>
-                Our Objectives
-              </h3>
-              <ul class="space-y-4">
-                <li class="flex items-start gap-3">
-                  <span
-                    class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                  >
-                    <svg
-                      class="w-4 h-4 text-green-600"
-                      fill="currentColor"
-                      viewbox="0 0 24 24"
-                    >
-                      <path
-                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-                      /></svg
-                  ></span>
-                  <span class="text-gray-600"
-                    >To make campaign and awareness in the 36 states in Nigerian
-                    including FCT.</span
-                  >
-                </li>
-                <li class="flex items-start gap-3">
-                  <span
-                    class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                  >
-                    <svg
-                      class="w-4 h-4 text-green-600"
-                      fill="currentColor"
-                      viewbox="0 0 24 24"
-                    >
-                      <path
-                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-                      /></svg
-                  ></span>
-                  <span class="text-gray-600"
-                    >To campaign for healthy lifestyle.
-                  </span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span
-                    class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                  >
-                    <svg
-                      class="w-4 h-4 text-green-600"
-                      fill="currentColor"
-                      viewbox="0 0 24 24"
-                    >
-                      <path
-                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-                      /></svg
-                  ></span>
-                  <span class="text-gray-600"
-                    >To campaign for the control of high/low blood pressure in
-                    communities.
-                  </span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span
-                    class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                  >
-                    <svg
-                      class="w-4 h-4 text-green-600"
-                      fill="currentColor"
-                      viewbox="0 0 24 24"
-                    >
-                      <path
-                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-                      /></svg
-                  ></span>
-                  <span class="text-gray-600"
-                    >To reduce the risk of death caused by high/low blood
-                    pressure.
-                  </span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span
-                    class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                  >
-                    <svg
-                      class="w-4 h-4 text-green-600"
-                      fill="currentColor"
-                      viewbox="0 0 24 24"
-                    >
-                      <path
-                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-                      /></svg
-                  ></span>
-                  <span class="text-gray-600"
-                    >To do proper checkups to individuals with high/low blood
-                    pressure, and give them proper medication and BP machines
-                    for regular monitoring of blood pressure.
-                  </span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <span
-                    class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                  >
-                    <svg
-                      class="w-4 h-4 text-green-600"
-                      fill="currentColor"
-                      viewbox="0 0 24 24"
-                    >
-                      <path
-                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-                      /></svg
-                  ></span>
-                  <span class="text-gray-600"
-                    >Partnering with all the state government in Nigeria and FCT
-                    to reduce the risk of sudden death in Nigeria caused by
-                    blood pressure. Like Stroke, Cardiac arrest, Heart failure,
-                    Blindness, Erectile dysfunction.</span
-                  >
-                </li>
-                <li class="flex items-start gap-3">
-                  <span
-                    class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                  >
-                    <svg
-                      class="w-4 h-4 text-green-600"
-                      fill="currentColor"
-                      viewbox="0 0 24 24"
-                    >
-                      <path
-                        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-                      /></svg
-                  ></span>
-                  <span class="text-gray-600"
-                    >To promote and improve on the present administration agenda
-                    on Renew hope agenda by living a healthy life.
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div class="bg-white rounded-2xl shadow-lg p-8">
-              <h3
-                class="font-heading text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-3"
-              >
-                <span
-                  class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center"
-                >
-                  <svg
-                    class="w-5 h-5 text-red-600"
-                    fill="currentColor"
-                    viewbox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                    /></svg
-                ></span>
-                Core Values
-              </h3>
-              <div class="grid grid-cols-2 gap-4">
-                <div class="bg-red-50 rounded-xl p-4">
-                  <div class="font-semibold text-red-700 mb-1">
-                    Community Empowerment
-                  </div>
-                </div>
-                <div class="bg-red-50 rounded-xl p-4">
-                  <div class="font-semibold text-red-700 mb-1">
-                    Health Equity
-                  </div>
-                </div>
-                <div class="bg-red-50 rounded-xl p-4">
-                  <div class="font-semibold text-red-700 mb-1">
-                    Collaboration
-                  </div>
-                </div>
-                <div class="bg-red-50 rounded-xl p-4">
-                  <div class="font-semibold text-red-700 mb-1">Innovation</div>
-                </div>
-                <div class="bg-red-50 rounded-xl p-4">
-                  <div class="font-semibold text-red-700 mb-1">Compassion</div>
-                </div>
-                <div class="bg-red-50 rounded-xl p-4">
-                  <div class="font-semibold text-red-700 mb-1">
-                    Transparency and Accountability
-                  </div>
-                </div>
-                <div class="bg-red-50 rounded-xl p-4">
-                  <div class="font-semibold text-red-700 mb-1">
-                    Sustainability
-                  </div>
-                </div>
+                  </svg-->
+
+                <img src="img.jpg" alt="logo" class="w-full text-red-400" />
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      <div class="section-divider max-w-xs mx-auto"></div>
+        <!-- Vision, Mission, Motto -->
+        <div class="grid md:grid-cols-3 gap-6 mb-12 text-center">
 
-      <!-- Leadership Section -->
-      <section id="leadership" class="py-20 px-4 bg-white/50">
-        <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-12">
-            <span
-              class="text-red-600 font-semibold uppercase tracking-wider text-sm"
-              >Meet Our Team</span
-            >
-            <h2
-              class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 mt-2"
-            >
-              Board of Directors
-            </h2>
-            <p class="text-gray-600 mt-3 max-w-2xl mx-auto">
-              Dedicated leaders bringing decades of experience in humanitarian
-              work, business, and community development.
+          <!-- Our Vision -->
+          <div
+            class="bg-white rounded-2xl shadow-lg p-8 card-hover border-t-4 border-red-500 flex flex-col gap-2 items-center justify-center">
+            <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-5">
+              <svg class="w-7 h-7 text-red-600" fill="currentColor" viewbox="0 0 24 24">
+                <path
+                  d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+              </svg>
+            </div>
+            <h3 class="font-heading text-xl font-semibold text-gray-800 mb-3">
+              Our Vision
+            </h3>
+            <p id="vision-text" class="text-gray-600 leading-relaxed flex flex-col gap-2 items-center justify-center">
+              A world where every individual has access to quality education,
+              healthcare, and economic opportunities, enabling them to reach
+              their full potential and contribute to their communities.
             </p>
           </div>
-          <div
-            id="directors-grid"
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            <!-- Directors will be rendered here -->
-          </div>
-        </div>
-      </section>
 
-      <!-- Director Modal -->
-      <div id="director-modal" class="fixed inset-0 z-50 hidden">
-        <div
-          class="modal-backdrop absolute inset-0"
-          onclick="closeDirectorModal()"
-        ></div>
-        <div class="relative h-full flex items-center justify-center p-4">
+          <!-- Our Motto -->
           <div
-            class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90%] overflow-auto animate-fade-in"
-          >
-            <div class="relative">
-              <button
-                onclick="closeDirectorModal()"
-                class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center z-10 hover:bg-gray-100 transition-colors"
-              >
-                <svg
-                  class="w-5 h-5 text-gray-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewbox="0 0 24 24"
-                >
+            class="bg-white rounded-2xl shadow-lg p-8 card-hover border-t-4 border-red-300 flex flex-col gap-2 items-center justify-center">
+            <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-5">
+              <svg class="w-7 h-7 text-red-600" fill="currentColor" viewbox="0 0 24 24">
+                <path
+                  d="M20.5 6c-2.61.7-5.67 1-8.5 1s-5.89-.3-8.5-1L3 8c1.86.5 4 .83 6 1v13h2v-6h2v6h2V9c2-.17 4.14-.5 6-1l-.5-2zM12 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
+              </svg>
+            </div>
+            <h3 class="font-heading text-xl font-semibold text-gray-800 mb-3">
+              Our Motto
+            </h3>
+            <p id="motto-text" class="text-gray-600 leading-relaxed italic text-lg">
+              "Healthy Living, Stronger Nigeria"
+            </p>
+          </div>
+          
+          <!-- Our Mission -->
+          <div
+            class="bg-white rounded-2xl shadow-lg p-8 card-hover border-t-4 border-red-400 flex flex-col gap-2 items-center justify-center">
+            <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-5">
+              <svg class="w-7 h-7 text-red-600" fill="currentColor" viewbox="0 0 24 24">
+                <path
+                  d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+              </svg>
+            </div>
+            <h3 class="font-heading text-xl font-semibold text-gray-800 mb-3">
+              Our Mission
+            </h3>
+            <p id="mission-text" class="text-gray-600 leading-relaxed">
+              To empower underserved communities through sustainable programs
+              in education, healthcare, and economic development, creating
+              lasting change through partnership, innovation, and compassion.
+            </p>
+          </div>
+
+        </div>
+        <!-- Objectives & Core Values -->
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div class="bg-white rounded-2xl shadow-lg p-8">
+            <h3 class="font-heading text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
+              <span class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-red-600" fill="currentColor" viewbox="0 0 24 24">
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-              <div id="modal-content" class="p-8">
-                <!-- Modal content will be rendered here -->
+                    d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
+                </svg></span>
+              Our Objectives
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-green-600" fill="currentColor" viewbox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                  </svg></span>
+                <span class="text-gray-600">To make campaign and awareness in the 36 states in Nigerian
+                  including FCT.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-green-600" fill="currentColor" viewbox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                  </svg></span>
+                <span class="text-gray-600">To campaign for healthy lifestyle.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-green-600" fill="currentColor" viewbox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                  </svg></span>
+                <span class="text-gray-600">To campaign for the control of high/low blood pressure in
+                  communities.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-green-600" fill="currentColor" viewbox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                  </svg></span>
+                <span class="text-gray-600">To reduce the risk of death caused by high/low blood
+                  pressure.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-green-600" fill="currentColor" viewbox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                  </svg></span>
+                <span class="text-gray-600">To do proper checkups to individuals with high/low blood
+                  pressure, and give them proper medication and BP machines
+                  for regular monitoring of blood pressure.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-green-600" fill="currentColor" viewbox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                  </svg></span>
+                <span class="text-gray-600">Partnering with all the state government in Nigeria and FCT
+                  to reduce the risk of sudden death in Nigeria caused by
+                  blood pressure. Like Stroke, Cardiac arrest, Heart failure,
+                  Blindness, Erectile dysfunction.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-green-600" fill="currentColor" viewbox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                  </svg></span>
+                <span class="text-gray-600">To promote and improve on the present administration agenda
+                  on Renew hope agenda by living a healthy life.
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-white rounded-2xl shadow-lg p-8">
+            <h3 class="font-heading text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
+              <span class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-red-600" fill="currentColor" viewbox="0 0 24 24">
+                  <path
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg></span>
+              Core Values
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-red-50 rounded-xl p-4">
+                <div class="font-semibold text-red-700 mb-1">
+                  Community Empowerment
+                </div>
+              </div>
+              <div class="bg-red-50 rounded-xl p-4">
+                <div class="font-semibold text-red-700 mb-1">
+                  Health Equity
+                </div>
+              </div>
+              <div class="bg-red-50 rounded-xl p-4">
+                <div class="font-semibold text-red-700 mb-1">
+                  Collaboration
+                </div>
+              </div>
+              <div class="bg-red-50 rounded-xl p-4">
+                <div class="font-semibold text-red-700 mb-1">Innovation</div>
+              </div>
+              <div class="bg-red-50 rounded-xl p-4">
+                <div class="font-semibold text-red-700 mb-1">Compassion</div>
+              </div>
+              <div class="bg-red-50 rounded-xl p-4">
+                <div class="font-semibold text-red-700 mb-1">
+                  Transparency and Accountability
+                </div>
+              </div>
+              <div class="bg-red-50 rounded-xl p-4">
+                <div class="font-semibold text-red-700 mb-1">
+                  Sustainability
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Certificate Modal -->
-      <div id="certificate-modal" class="fixed inset-0 z-50 hidden">
-        <div
-          class="modal-backdrop absolute inset-0"
-          onclick="closeCertificateModal()"
-        ></div>
+    <div class="section-divider max-w-xs mx-auto"></div>
 
-        <div class="relative h-full flex items-center justify-center p-4">
-          <div
-            class="relative bg-white rounded-3xl shadow-2xl max-w-5xl w-full max-h-[95%] overflow-auto animate-fade-in"
-          >
-            <button
-              onclick="closeCertificateModal()"
-              class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-10"
-            >
-              ✕
-            </button>
-
-            <div class="p-6 text-center">
-              <h3
-                id="certificate-title"
-                class="font-heading text-2xl font-semibold text-gray-800 mb-4"
-              ></h3>
-
-              <img
-                id="certificate-image"
-                src=""
-                alt=""
-                class="mx-auto max-h-[80vh] object-contain rounded-xl"
-              />
-            </div>
-          </div>
+    <!-- Leadership Section -->
+    <section id="leadership" class="py-20 px-4 bg-white/50">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-red-600 font-semibold uppercase tracking-wider text-sm">Meet Our Team</span>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 mt-2">
+            Board of Directors
+          </h2>
+          <p class="text-gray-600 mt-3 max-w-2xl mx-auto">
+            Dedicated leaders bringing decades of experience in humanitarian
+            work, business, and community development.
+          </p>
+        </div>
+        <div id="directors-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Directors will be rendered here -->
         </div>
       </div>
+    </section>
 
-      <div class="section-divider max-w-xs mx-auto"></div>
-
-      <!-- Projects Section -->
-      <section id="projects" class="py-20 px-4">
-        <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-12">
-            <span
-              class="text-red-600 font-semibold uppercase tracking-wider text-sm"
-              >Our Impact</span
-            >
-            <h2
-              class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 mt-2"
-            >
-              Ongoing Initiatives
-            </h2>
-            <p class="text-gray-600 mt-3 max-w-2xl mx-auto">
-              Discover the projects transforming lives and communities around
-              the world.
-            </p>
-          </div>
+    <!-- Director Modal -->
+    <div id="director-modal" class="fixed inset-0 z-50 hidden">
+      <div class="modal-backdrop absolute inset-0" onclick="closeDirectorModal()"></div>
+      <div class="relative h-full flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90%] overflow-auto animate-fade-in">
           <div class="relative">
-            <div
-              id="projects-carousel"
-              class="carousel-container flex gap-6 overflow-x-auto pb-4 px-2"
-            >
-              <!-- Projects will be rendered here -->
-            </div>
-            <button
-              onclick="scrollCarousel(-1)"
-              class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-red-50 transition-colors hidden md:flex"
-            >
-              <svg
-                class="w-6 h-6 text-red-600"
-                fill="none"
-                stroke="currentColor"
-                viewbox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 19l-7-7 7-7"
-                />
+            <button onclick="closeDirectorModal()"
+              class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center z-10 hover:bg-gray-100 transition-colors">
+              <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <button
-              onclick="scrollCarousel(1)"
-              class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-red-50 transition-colors hidden md:flex"
-            >
-              <svg
-                class="w-6 h-6 text-red-600"
-                fill="none"
-                stroke="currentColor"
-                viewbox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <div class="section-divider max-w-xs mx-auto"></div>
-
-      <!-- Certificates Section -->
-      <section id="certificates" class="py-20 px-4 bg-white/50">
-        <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-12">
-            <span
-              class="text-red-600 font-semibold uppercase tracking-wider text-sm"
-            >
-              Accreditation & Recognition
-            </span>
-            <h2
-              class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 mt-2"
-            >
-              Our Certifications
-            </h2>
-            <p class="text-gray-600 mt-3 max-w-2xl mx-auto">
-              Official certifications that validate our credibility, compliance,
-              and commitment to public health impact.
-            </p>
-          </div>
-
-          <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div
-              class="bg-white rounded-2xl shadow-lg p-6 card-hover cursor-pointer"
-              onclick="
-                openCertificateModal(
-                  'img.jpg',
-                  'Certificate of Registration',
-                )
-              "
-            >
-              <img
-                src="img.jpg"
-                alt="HYPA Certificate 1"
-                class="rounded-xl w-full object-contain"
-              />
-              <p class="text-center text-gray-600 mt-4 font-medium">
-                Certificate of Registration
-              </p>
-            </div>
-
-            <div
-              class="bg-white rounded-2xl shadow-lg p-6 card-hover cursor-pointer"
-              onclick="
-                openCertificateModal(
-                  'img.jpg',
-                  'Certificate of Registration',
-                )
-              "
-            >
-              <img
-                src="img.jpg"
-                alt="HYPA Certificate 2"
-                class="rounded-xl w-full object-contain"
-              />
-              <p class="text-center text-gray-600 mt-4 font-medium">
-                Health Advocacy Accreditation
-              </p>
+            <div id="modal-content" class="p-8">
+              <!-- Modal content will be rendered here -->
             </div>
           </div>
         </div>
-      </section>
-
-      <div class="section-divider max-w-xs mx-auto"></div>
-
-      <!-- Partners Section -->
-      <section id="partners" class="py-20 px-4">
-        <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-12">
-            <span
-              class="text-red-600 font-semibold uppercase tracking-wider text-sm"
-            >
-              Collaboration
-            </span>
-            <h2
-              class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 mt-2"
-            >
-              Our Partners
-            </h2>
-            <p class="text-gray-600 mt-3 max-w-2xl mx-auto">
-              We work alongside trusted organizations and institutions to
-              amplify our impact nationwide.
-            </p>
-          </div>
-
-          <div
-            id="partners-grid"
-            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center"
-          >
-            <!-- Partners rendered via JS -->
-          </div>
-        </div>
-      </section>
-
-      <div class="section-divider max-w-xs mx-auto"></div>
-
-      <!-- Get Involved Section -->
-      <section id="involve" class="py-20 px-4 bg-white/50">
-        <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-12">
-            <span
-              class="text-red-600 font-semibold uppercase tracking-wider text-sm"
-              >Join Our Mission</span
-            >
-            <h2
-              class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 mt-2"
-            >
-              Get Involved
-            </h2>
-            <p class="text-gray-600 mt-3 max-w-2xl mx-auto">
-              Whether through volunteering, donating, or spreading the word,
-              your support makes a real difference.
-            </p>
-          </div>
-          <div class="grid lg:grid-cols-2 gap-12">
-            <!-- Volunteer Form -->
-            <div class="bg-white rounded-3xl shadow-xl p-8">
-              <div class="flex items-center gap-4 mb-6">
-                <div
-                  class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center"
-                >
-                  <svg
-                    class="w-7 h-7 text-red-600"
-                    fill="currentColor"
-                    viewbox="0 0 24 24"
-                  >
-                    <path
-                      d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="font-heading text-2xl font-semibold text-gray-800">
-                    Become a Volunteer
-                  </h3>
-                  <p class="text-gray-500">
-                    Join our global community of changemakers
-                  </p>
-                </div>
-              </div>
-              <form id="volunteer-form" class="space-y-5">
-                <div class="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      for="vol-firstname"
-                      class="block text-sm font-medium text-gray-700 mb-1"
-                      >First Name</label
-                    >
-                    <input
-                      type="text"
-                      id="vol-firstname"
-                      required
-                      class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      for="vol-lastname"
-                      class="block text-sm font-medium text-gray-700 mb-1"
-                      >Last Name</label
-                    >
-                    <input
-                      type="text"
-                      id="vol-lastname"
-                      required
-                      class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    for="vol-email"
-                    class="block text-sm font-medium text-gray-700 mb-1"
-                    >Email Address</label
-                  >
-                  <input
-                    type="email"
-                    id="vol-email"
-                    required
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all"
-                  />
-                </div>
-                <div>
-                  <label
-                    for="vol-phone"
-                    class="block text-sm font-medium text-gray-700 mb-1"
-                    >Phone Number</label
-                  >
-                  <input
-                    type="tel"
-                    id="vol-phone"
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all"
-                  />
-                </div>
-                <div>
-                  <label
-                    for="vol-interest"
-                    class="block text-sm font-medium text-gray-700 mb-1"
-                    >Area of Interest</label
-                  >
-                  <select
-                    id="vol-interest"
-                    required
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all bg-white"
-                  >
-                    <option value="">Select an area</option>
-                    <option value="education">Education Programs</option>
-                    <option value="healthcare">Healthcare Initiatives</option>
-                    <option value="environment">Environmental Projects</option>
-                    <option value="community">Community Development</option>
-                    <option value="fundraising">
-                      Fundraising &amp; Events
-                    </option>
-                  </select>
-                </div>
-                <div>
-                  <label
-                    for="vol-message"
-                    class="block text-sm font-medium text-gray-700 mb-1"
-                    >Why do you want to volunteer?</label
-                  >
-                  <textarea
-                    id="vol-message"
-                    rows="3"
-                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all resize-none"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  class="w-full btn-primary text-white py-4 rounded-xl font-semibold text-lg"
-                >
-                  Submit Application
-                </button>
-                <div
-                  id="form-success"
-                  class="hidden text-center p-4 bg-green-50 rounded-xl"
-                >
-                  <div class="text-green-600 font-medium">
-                    🎉 Thank you for your interest! We'll be in touch soon.
-                  </div>
-                </div>
-              </form>
-            </div>
-            <!-- Donate CTA -->
-            <div class="flex flex-col gap-6">
-              <div
-                class="bg-gradient-to-br from-red-500 to-red-600 rounded-3xl shadow-xl p-8 text-white flex-1"
-              >
-                <div
-                  class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6"
-                >
-                  <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24">
-                    <path
-                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                    />
-                  </svg>
-                </div>
-                <h3 class="font-heading text-3xl font-bold mb-4">
-                  Make a Donation
-                </h3>
-                <p class="text-red-100 text-lg mb-8 leading-relaxed">
-                  Your generosity powers our mission. Every contribution, big or
-                  small, directly supports communities in need and helps create
-                  lasting change.
-                </p>
-                <div class="grid grid-cols-4 gap-3 mb-6">
-                  <button
-                    onclick="selectAmount(25)"
-                    class="donation-btn py-3 rounded-xl bg-white/20 hover:bg-white/30 transition-colors font-semibold"
-                  >
-                    $25
-                  </button>
-                  <button
-                    onclick="selectAmount(50)"
-                    class="donation-btn py-3 rounded-xl bg-white/20 hover:bg-white/30 transition-colors font-semibold"
-                  >
-                    $50
-                  </button>
-                  <button
-                    onclick="selectAmount(100)"
-                    class="donation-btn py-3 rounded-xl bg-white/20 hover:bg-white/30 transition-colors font-semibold"
-                  >
-                    $100
-                  </button>
-                  <button
-                    onclick="selectAmount(250)"
-                    class="donation-btn py-3 rounded-xl bg-white/20 hover:bg-white/30 transition-colors font-semibold"
-                  >
-                    $250
-                  </button>
-                </div>
-                <div class="flex gap-3 mb-6">
-                  <span class="text-2xl font-bold">$</span>
-                  <input
-                    type="number"
-                    id="custom-amount"
-                    placeholder="Custom amount"
-                    class="flex-1 bg-white/20 rounded-xl px-4 py-3 text-white placeholder-red-200 outline-none focus:bg-white/30 transition-colors"
-                  />
-                </div>
-                <button
-                  onclick="handleDonate()"
-                  class="w-full bg-white text-red-600 py-4 rounded-xl font-bold text-lg hover:bg-red-50 transition-colors"
-                >
-                  Donate Now →
-                </button>
-                <div
-                  id="donate-success"
-                  class="hidden mt-4 text-center p-4 bg-white/20 rounded-xl"
-                >
-                  <div class="font-medium">
-                    💖 Thank you for your generous donation!
-                  </div>
-                </div>
-              </div>
-              <div class="bg-white rounded-2xl shadow-lg p-6">
-                <h4
-                  class="font-heading text-lg font-semibold text-gray-800 mb-3"
-                >
-                  Other Ways to Help
-                </h4>
-                <div class="space-y-3">
-                  <div class="flex items-center gap-3 text-gray-600">
-                    <svg
-                      class="w-5 h-5 text-red-500 flex-shrink-0"
-                      fill="currentColor"
-                      viewbox="0 0 24 24"
-                    >
-                      <path
-                        d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
-                      /></svg
-                    ><span>Share our mission on social media</span>
-                  </div>
-                  <div class="flex items-center gap-3 text-gray-600">
-                    <svg
-                      class="w-5 h-5 text-red-500 flex-shrink-0"
-                      fill="currentColor"
-                      viewbox="0 0 24 24"
-                    >
-                      <path
-                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                      /></svg
-                    ><span>Host a fundraising event</span>
-                  </div>
-                  <div class="flex items-center gap-3 text-gray-600">
-                    <svg
-                      class="w-5 h-5 text-red-500 flex-shrink-0"
-                      fill="currentColor"
-                      viewbox="0 0 24 24"
-                    >
-                      <path
-                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-                      /></svg
-                    ><span>Subscribe to our newsletter</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <footer class="bg-gray-900 text-white py-16 px-4">
-        <div class="max-w-7xl mx-auto">
-          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-            <div>
-              <div class="flex items-center gap-3 mb-4">
-                <div
-                  class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center"
-                >
-                  <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
-                    <path
-                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                    />
-                  </svg>
-                </div>
-                <span
-                  id="footer-org-name"
-                  class="font-heading text-xl font-semibold"
-                  >Hypertension Awareness and Prevention Initiative</span
-                >
-              </div>
-              <p class="text-gray-400 leading-relaxed">
-                Empowering communities and transforming lives through
-                sustainable development programs worldwide.
-              </p>
-            </div>
-            <div>
-              <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
-              <ul class="space-y-2 text-gray-400">
-                <li>
-                  <a href="#about" class="hover:text-red-400 transition-colors"
-                    >About Us</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#leadership"
-                    class="hover:text-red-400 transition-colors"
-                    >Our Team</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#projects"
-                    class="hover:text-red-400 transition-colors"
-                    >Projects</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#involve"
-                    class="hover:text-red-400 transition-colors"
-                    >Get Involved</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 class="font-semibold text-lg mb-4">Contact Us</h4>
-              <ul class="space-y-3 text-gray-400">
-                <li class="flex items-start gap-2">
-                  <svg
-                    class="w-5 h-5 mt-0.5 text-red-500 flex-shrink-0"
-                    fill="currentColor"
-                    viewbox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-                    /></svg
-                  ><span id="footer-address"
-                    >123 Hope Street, Suite 500<br />
-                    New York, NY 10001</span
-                  >
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg
-                    class="w-5 h-5 text-red-500 flex-shrink-0"
-                    fill="currentColor"
-                    viewbox="0 0 24 24"
-                  >
-                    <path
-                      d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
-                    /></svg
-                  ><span id="footer-phone">+1 (555) 123-4567</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg
-                    class="w-5 h-5 text-red-500 flex-shrink-0"
-                    fill="currentColor"
-                    viewbox="0 0 24 24"
-                  >
-                    <path
-                      d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-                    /></svg
-                  ><span id="footer-email">info@brightfutures.org</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg
-                    class="w-5 h-5 text-red-500 flex-shrink-0"
-                    fill="currentColor"
-                    viewbox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
-                    /></svg
-                  ><span>www.brightfutures.org</span>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 class="font-semibold text-lg mb-4">Follow Us</h4>
-              <div class="flex gap-3">
-                <a
-                  href="#"
-                  class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
-                    <path
-                      d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
-                    /></svg
-                ></a>
-                <a
-                  href="#"
-                  class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
-                    <path
-                      d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
-                    /></svg
-                ></a>
-                <a
-                  href="#"
-                  class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
-                    <path
-                      d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.757-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"
-                    /></svg
-                ></a>
-                <a
-                  href="#"
-                  class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
-                    <path
-                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                    /></svg
-                ></a>
-              </div>
-              <div class="mt-6">
-                <p class="text-gray-400 text-sm mb-2">Newsletter</p>
-                <form id="newsletter-form" class="flex gap-2">
-                  <input
-                    type="email"
-                    placeholder="Your email"
-                    required
-                    class="flex-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:border-red-500 outline-none"
-                  />
-                  <button
-                    type="submit"
-                    class="px-4 py-2 bg-red-600 rounded-lg hover:bg-red-700 transition-colors"
-                  >
-                    <svg
-                      class="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewbox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
-                      />
-                    </svg>
-                  </button>
-                </form>
-                <div
-                  id="newsletter-success"
-                  class="hidden mt-2 text-green-400 text-sm"
-                >
-                  Thanks for subscribing!
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
-          >
-            <p class="text-gray-500 text-sm">
-              © 2026 HYPA Nigeria. All rights reserved.
-            </p>
-            <div class="flex gap-6 text-gray-500 text-sm">
-              <a href="#" class="hover:text-red-400 transition-colors"
-                >Privacy Policy</a
-              >
-              <a href="#" class="hover:text-red-400 transition-colors"
-                >Terms of Service</a
-              >
-              <a href="#" class="hover:text-red-400 transition-colors"
-                >Annual Report</a
-              >
-            </div>
-          </div>
-        </div>
-      </footer>
+      </div>
     </div>
 
-    <script>
-      // Default configuration
-      const defaultConfig = {
-        org_name:
-          "Hypertension Awareness and Prevention Initiative (HYPA) Nigeria",
-        org_name_short: "HYPA Nigeria",
-        org_tagline: "Healthy Living, Stronger Nigeria",
-        vision_text:
-          "A Nigeria where every individual is aware of their blood pressure status, empowered to prevent hypertension, and supported to achieve long-term health, free from cardiovascular complications.",
-        mission_text:
-          "To reduce the burden of hypertension in Nigeria by raising awareness, promoting preventive lifestyles, and enhancing access to care through community-driven initiatives, supporting the Renewed Hope Agenda’s vision for a healthier Nigeria.",
-        motto_text: '"Healthy Living, Stronger Nigeria"',
-        contact_email: "hypertensionpreventionawareness@gmail.com",
-        contact_phone: "+234 806 547 9422, +234 901 371 3197",
-        contact_address:
-          "Block C 33 unity road phase 4 Military housing eastern Kurudu FCT Abuja Nigeria",
-        primary_color: "#e75c5c",
-        secondary_color: "#fff7ed",
-        text_color: "#1f2937",
-        accent_color: "#c2410c",
-        surface_color: "#ffffff",
-        font_family: "Source Sans 3",
-        font_size: 16,
-      };
+    <!-- Certificate Modal -->
+    <div id="certificate-modal" class="fixed inset-0 z-50 hidden">
+      <div class="modal-backdrop absolute inset-0" onclick="closeCertificateModal()"></div>
 
-      // Directors data
-      const directors = [
-        {
-          id: 1,
-          image: "adeniyi_adebowale.jpg",
-          name: "Mr. Adebowale Adeniyi Oluwagbenga",
-          title:
-            "Chairman/CEO, Hypertension Prevention Awareness (HYPA) Visionary Leader & Healthcare Advocate",
-          bio: "Dr. Mitchell brings over 25 years of experience in international development and humanitarian work. Her leadership has guided the foundation through significant growth while maintaining our commitment to community-centered approaches.",
-          education:
-            "Ph.D. in International Development, Harvard University; M.A. in Public Policy, Georgetown University",
-          waed: "Former Director of UNICEF East Africa; Board Member, World Health Organization; Consultant, Gates Foundation",
-          skills: [
-            "Strategic Leadership",
-            "Policy Development",
-            "Fundraising",
-            "Stakeholder Management",
-          ],
-          impact:
-            "Led initiatives that have directly impacted over 2 million lives across 20 countries",
-        },
-        {
-          id: 2,
-          image: "chief_segun_obada.jpg",
-          name: "Chief Segun Obada",
-          title: "Vice Chairperson",
-          bio: "Michael is a serial entrepreneur and philanthropist dedicated to leveraging technology for social good. He founded three successful tech companies before joining our board.",
-          education:
-            "MBA, Stanford Graduate School of Business; B.S. Computer Science, MIT",
-          experience:
-            "Founder & CEO, TechForGood Inc.; Angel Investor; Former VP Engineering, Google",
-          skills: [
-            "Technology Strategy",
-            "Business Development",
-            "Impact Investing",
-          ],
-          impact:
-            "Pioneered digital literacy programs reaching 500,000+ students in underserved communities",
-        },
-        {
-          id: 3,
-          image: "david_anifowose.jpg",
-          name: "David Anifowose",
-          title: "Secretary",
-          bio: "Amara is an accomplished attorney specializing in nonprofit law and human rights advocacy. Her expertise ensures our foundation operates with the highest standards of governance.",
-          education:
-            "J.D., Yale Law School; LL.M. in Human Rights, Oxford University",
-          experience:
-            "Partner, Global Justice Law Firm; UN Human Rights Council Advisor; Legal Director, Amnesty International",
-          skills: [
-            "Legal Compliance",
-            "Governance",
-            "Human Rights Law",
-            "Contract Negotiation",
-          ],
-          impact:
-            "Established legal frameworks that protect the rights of displaced communities in 15 countries",
-        },
-        {
-          id: 4,
-          image: "martin_lateef_shehu.jpg",
-          name: "Martin Lateef Shehu",
-          title: "Treasurer",
-          bio: "James brings three decades of financial management experience from both corporate and nonprofit sectors. His financial acumen has strengthened our fiscal responsibility.",
-          education:
-            "CPA; M.S. Finance, Wharton School; B.A. Economics, Princeton University",
-          experience:
-            "CFO, International Relief Organization; Partner, Deloitte; Board Treasurer, Multiple Nonprofits",
-          skills: [
-            "Financial Management",
-            "Audit & Compliance",
-            "Budget Planning",
-            "Risk Assessment",
-          ],
-          impact:
-            "Implemented financial systems that increased donor transparency by 95%",
-        },
-        {
-          id: 5,
-          image: "mrs_kaliat_adeniyi.jpg",
-          name: "Mrs. Kaliat Adeniyi",
-          title: "Director of Programs",
-          bio: "Dr. Sharma is a renowned public health expert who has designed and implemented health programs across South Asia and Sub-Saharan Africa.",
-          education:
-            "M.D., Johns Hopkins School of Medicine; M.P.H., Harvard T.H. Chan School of Public Health",
-          experience:
-            "Chief Medical Officer, WHO South Asia; Director, Médecins Sans Frontières; Research Fellow, CDC",
-          skills: [
-            "Program Design",
-            "Health Systems",
-            "Community Health",
-            "Research & Evaluation",
-          ],
-          impact:
-            "Designed vaccination programs that protected over 10 million children from preventable diseases",
-        },
-        {
-          id: 6,
-          image: "mr_adeyemi_megbuwaon.jpg",
-          name: "Mr. Adeyemi Megbuwaon",
-          title: "Director of Operations",
-          bio: "Roberto specializes in scaling humanitarian operations in challenging environments. His logistics expertise has been crucial to our disaster response capabilities.",
-          education:
-            "M.A. Humanitarian Logistics, Cranfield University; B.Eng., Universidad Nacional Autónoma de México",
-          experience:
-            "Operations Director, Red Cross International; Supply Chain Lead, World Food Programme; Army Corps of Engineers",
-          skills: [
-            "Logistics",
-            "Disaster Response",
-            "Supply Chain",
-            "Crisis Management",
-          ],
-          impact:
-            "Coordinated relief efforts delivering aid to 3 million people affected by natural disasters",
-        },
-      ];
+      <div class="relative h-full flex items-center justify-center p-4">
+        <div
+          class="relative bg-white rounded-3xl shadow-2xl max-w-5xl w-full max-h-[95%] overflow-auto animate-fade-in">
+          <button onclick="closeCertificateModal()"
+            class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors z-10">
+            ✕
+          </button>
 
-      // Projects data
-      const projects = [
-        {
-          id: 1,
-          title: "Mobile Hypertension Screening and Education Campaign: ",
-          description:
-            "Deploy mobile units to screen Nigerians in underserved areas, gives free blood pressure medications, providing education on risk factors (e.g., high salt intake, physical inactivity) and linking patients to care.",
-          icon: "📚",
-          color: "from-blue-500 to-blue-600",
-        },
-        {
-          id: 2,
-          title: "Primary Healthcare Integration",
-          description:
-            "Train non-physician health workers in PHCs to implement WHO’s HEARTS protocol for hypertension management, ensuring affordable medications through drug revolving funds.",
-          icon: "💧",
-          color: "from-cyan-500 to-cyan-600",
-        },
-        {
-          id: 3,
-          title: "Youth and Lifestyle Program",
-          description:
-            "Engage students through school workshops promoting healthy diets, regular exercise, and avoidance of smoking and excessive alcohol.",
-          icon: "👩‍💼",
-          color: "from-purple-500 to-purple-600",
-        },
-        {
-          id: 4,
-          title: "Policy Advocacy",
-          description:
-            "Collaborate with the Federal Ministry of Health to advocate for policies like reduced salt content in processed foods, supporting the Renewed Hope Agenda’s focus on preventive health.",
-          icon: "🏥",
-          color: "from-red-500 to-red-600",
-        },
-        {
-          id: 5,
-          title: "Community Support Groups",
-          description:
-            "Establish peer-led support groups in communities to promote treatment adherence and self-management, including home blood pressure monitoring.",
-          icon: "🌱",
-          color: "from-green-500 to-green-600",
-        },
-      ];
+          <div class="p-6 text-center">
+            <h3 id="certificate-title" class="font-heading text-2xl font-semibold text-gray-800 mb-4"></h3>
 
-      // Partners data
-      const partners = [
-        {
-          name: "Federal Ministry of Health",
-          logo: "img.jpg",
-        },
-        {
-          name: "World Health Organization",
-          logo: "img.jpg",
-        },
-        {
-          name: "NCDC",
-          logo: "img.jpg",
-        },
-        {
-          name: "UNICEF",
-          logo: "img.jpg",
-        },
-        {
-          name: "Red Cross Nigeria",
-          logo: "img.jpg",
-        },
-      ];
+            <img id="certificate-image" src="" alt="" class="mx-auto max-h-[80vh] object-contain rounded-xl" />
+          </div>
+        </div>
+      </div>
+    </div>
 
-      // Render functions
-      function renderDirectors() {
-        const grid = document.getElementById("directors-grid");
-        grid.innerHTML = directors
-          .map(
-            (director) => `
+    <div class="section-divider max-w-xs mx-auto"></div>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-red-600 font-semibold uppercase tracking-wider text-sm">Our Impact</span>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 mt-2">
+            Ongoing Initiatives
+          </h2>
+          <p class="text-gray-600 mt-3 max-w-2xl mx-auto">
+            Discover the projects transforming lives and communities around
+            the world.
+          </p>
+        </div>
+        <div class="relative">
+          <div id="projects-carousel" class="carousel-container flex gap-6 overflow-x-auto pb-4 px-2">
+            <!-- Projects will be rendered here -->
+          </div>
+          <button onclick="scrollCarousel(-1)"
+            class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-red-50 transition-colors hidden md:flex">
+            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button onclick="scrollCarousel(1)"
+            class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-red-50 transition-colors hidden md:flex">
+            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider max-w-xs mx-auto"></div>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="py-20 px-4 bg-white/50">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-red-600 font-semibold uppercase tracking-wider text-sm">
+            Accreditation & Recognition
+          </span>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 mt-2">
+            Our Certifications
+          </h2>
+          <p class="text-gray-600 mt-3 max-w-2xl mx-auto">
+            Official certifications that validate our credibility, compliance,
+            and commitment to public health impact.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div class="bg-white rounded-2xl shadow-lg p-6 card-hover cursor-pointer" onclick="
+                openCertificateModal('img.jpg', 'Certificate of Registration')
+              ">
+            <img src="img.jpg" alt="HYPA Certificate 1" class="rounded-xl w-full object-contain" />
+            <p class="text-center text-gray-600 mt-4 font-medium">
+              Certificate of Registration
+            </p>
+          </div>
+
+          <div class="bg-white rounded-2xl shadow-lg p-6 card-hover cursor-pointer" onclick="
+                openCertificateModal('img.jpg', 'Certificate of Registration')
+              ">
+            <img src="img.jpg" alt="HYPA Certificate 2" class="rounded-xl w-full object-contain" />
+            <p class="text-center text-gray-600 mt-4 font-medium">
+              Health Advocacy Accreditation
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider max-w-xs mx-auto"></div>
+
+    <!-- Partners Section -->
+    <section id="partners" class="py-20 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-red-600 font-semibold uppercase tracking-wider text-sm">
+            Collaboration
+          </span>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 mt-2">
+            Our Partners
+          </h2>
+          <p class="text-gray-600 mt-3 max-w-2xl mx-auto">
+            We work alongside trusted organizations and institutions to
+            amplify our impact nationwide.
+          </p>
+        </div>
+
+        <div id="partners-grid"
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
+          <!-- Partners rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider max-w-xs mx-auto"></div>
+
+    <!-- Get Involved Section -->
+    <section id="involve" class="py-20 px-4 bg-white/50">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-red-600 font-semibold uppercase tracking-wider text-sm">Join Our Mission</span>
+          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 mt-2">
+            Get Involved
+          </h2>
+          <p class="text-gray-600 mt-3 max-w-2xl mx-auto">
+            Whether through volunteering, donating, or spreading the word,
+            your support makes a real difference.
+          </p>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12">
+          <!-- Volunteer Form -->
+          <div class="bg-white rounded-3xl shadow-xl p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center">
+                <svg class="w-7 h-7 text-red-600" fill="currentColor" viewbox="0 0 24 24">
+                  <path
+                    d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-heading text-2xl font-semibold text-gray-800">
+                  Become a Volunteer
+                </h3>
+                <p class="text-gray-500">
+                  Join our global community of changemakers
+                </p>
+              </div>
+            </div>
+            <form id="volunteer-form" class="space-y-5">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="vol-firstname" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                  <input type="text" id="vol-firstname" required
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all" />
+                </div>
+                <div>
+                  <label for="vol-lastname" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                  <input type="text" id="vol-lastname" required
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all" />
+                </div>
+              </div>
+              <div>
+                <label for="vol-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                <input type="email" id="vol-email" required
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all" />
+              </div>
+              <div>
+                <label for="vol-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                <input type="tel" id="vol-phone"
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all" />
+              </div>
+              <div>
+                <label for="vol-interest" class="block text-sm font-medium text-gray-700 mb-1">Area of Interest</label>
+                <select id="vol-interest" required
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all bg-white">
+                  <option value="">Select an area</option>
+                  <option value="education">Education Programs</option>
+                  <option value="healthcare">Healthcare Initiatives</option>
+                  <option value="environment">Environmental Projects</option>
+                  <option value="community">Community Development</option>
+                  <option value="fundraising">
+                    Fundraising &amp; Events
+                  </option>
+                </select>
+              </div>
+              <div>
+                <label for="vol-message" class="block text-sm font-medium text-gray-700 mb-1">Why do you want to
+                  volunteer?</label>
+                <textarea id="vol-message" rows="3"
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all resize-none"></textarea>
+              </div>
+              <button type="submit" class="w-full btn-primary text-white py-4 rounded-xl font-semibold text-lg">
+                Submit Application
+              </button>
+              <div id="form-success" class="hidden text-center p-4 bg-green-50 rounded-xl">
+                <div class="text-green-600 font-medium">
+                  🎉 Thank you for your interest! We'll be in touch soon.
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- Donate CTA -->
+          <div class="flex flex-col gap-6">
+            <div class="bg-gradient-to-br from-red-500 to-red-600 rounded-3xl shadow-xl p-8 text-white flex-1">
+              <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24">
+                  <path
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg>
+              </div>
+              <h3 class="font-heading text-3xl font-bold mb-4">
+                Make a Donation
+              </h3>
+              <p class="text-red-100 text-lg mb-8 leading-relaxed">
+                Your generosity powers our mission. Every contribution, big or
+                small, directly supports communities in need and helps create
+                lasting change.
+              </p>
+              <div class="grid grid-cols-4 gap-3 mb-6">
+                <button onclick="selectAmount(25)"
+                  class="donation-btn py-3 rounded-xl bg-white/20 hover:bg-white/30 transition-colors font-semibold">
+                  $25
+                </button>
+                <button onclick="selectAmount(50)"
+                  class="donation-btn py-3 rounded-xl bg-white/20 hover:bg-white/30 transition-colors font-semibold">
+                  $50
+                </button>
+                <button onclick="selectAmount(100)"
+                  class="donation-btn py-3 rounded-xl bg-white/20 hover:bg-white/30 transition-colors font-semibold">
+                  $100
+                </button>
+                <button onclick="selectAmount(250)"
+                  class="donation-btn py-3 rounded-xl bg-white/20 hover:bg-white/30 transition-colors font-semibold">
+                  $250
+                </button>
+              </div>
+              <div class="flex gap-3 mb-6">
+                <span class="text-2xl font-bold">$</span>
+                <input type="number" id="custom-amount" placeholder="Custom amount"
+                  class="flex-1 bg-white/20 rounded-xl px-4 py-3 text-white placeholder-red-200 outline-none focus:bg-white/30 transition-colors" />
+              </div>
+              <button onclick="handleDonate()"
+                class="w-full bg-white text-red-600 py-4 rounded-xl font-bold text-lg hover:bg-red-50 transition-colors">
+                Donate Now →
+              </button>
+              <div id="donate-success" class="hidden mt-4 text-center p-4 bg-white/20 rounded-xl">
+                <div class="font-medium">
+                  💖 Thank you for your generous donation!
+                </div>
+              </div>
+            </div>
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+              <h4 class="font-heading text-lg font-semibold text-gray-800 mb-3">
+                Other Ways to Help
+              </h4>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3 text-gray-600">
+                  <svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+                    <path
+                      d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" />
+                  </svg><span>Share our mission on social media</span>
+                </div>
+                <div class="flex items-center gap-3 text-gray-600">
+                  <svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+                    <path
+                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                  </svg><span>Host a fundraising event</span>
+                </div>
+                <div class="flex items-center gap-3 text-gray-600">
+                  <svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+                    <path
+                      d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                  </svg><span>Subscribe to our newsletter</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
+                <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg>
+              </div>
+              <span id="footer-org-name" class="font-heading text-xl font-semibold">Hypertension Awareness and
+                Prevention Initiative</span>
+            </div>
+            <p class="text-gray-400 leading-relaxed">
+              Empowering communities and transforming lives through
+              sustainable development programs worldwide.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#about" class="hover:text-red-400 transition-colors">About Us</a>
+              </li>
+              <li>
+                <a href="#leadership" class="hover:text-red-400 transition-colors">Our Team</a>
+              </li>
+              <li>
+                <a href="#projects" class="hover:text-red-400 transition-colors">Projects</a>
+              </li>
+              <li>
+                <a href="#involve" class="hover:text-red-400 transition-colors">Get Involved</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg mb-4">Contact Us</h4>
+            <ul class="space-y-3 text-gray-400">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 mt-0.5 text-red-500 flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                </svg><span id="footer-address">123 Hope Street, Suite 500<br />
+                  New York, NY 10001</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+                  <path
+                    d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                </svg><span id="footer-phone">+1 (555) 123-4567</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+                  <path
+                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg><span id="footer-email">info@brightfutures.org</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                </svg><span>www.brightfutures.org</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg mb-4">Follow Us</h4>
+            <div class="flex gap-3">
+              <a href="#"
+                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg></a>
+              <a href="#"
+                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+                  <path
+                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                </svg></a>
+              <a href="#"
+                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+                  <path
+                    d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.757-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z" />
+                </svg></a>
+              <a href="#"
+                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg></a>
+            </div>
+            <div class="mt-6">
+              <p class="text-gray-400 text-sm mb-2">Newsletter</p>
+              <form id="newsletter-form" class="flex gap-2">
+                <input type="email" placeholder="Your email" required
+                  class="flex-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:border-red-500 outline-none" />
+                <button type="submit" class="px-4 py-2 bg-red-600 rounded-lg hover:bg-red-700 transition-colors">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
+              </form>
+              <div id="newsletter-success" class="hidden mt-2 text-green-400 text-sm">
+                Thanks for subscribing!
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-gray-500 text-sm">
+            © 2026 HYPA Nigeria. All rights reserved.
+          </p>
+          <div class="flex gap-6 text-gray-500 text-sm">
+            <a href="#" class="hover:text-red-400 transition-colors">Privacy Policy</a>
+            <a href="#" class="hover:text-red-400 transition-colors">Terms of Service</a>
+            <a href="#" class="hover:text-red-400 transition-colors">Annual Report</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      org_name:
+        "Hypertension Awareness and Prevention Initiative (HYPA) Nigeria",
+      org_name_short: "HYPA Nigeria",
+      org_tagline: "Healthy Living, Stronger Nigeria",
+      vision_text:
+        "A Nigeria where every individual is aware of their blood pressure status, empowered to prevent hypertension, and supported to achieve long-term health, free from cardiovascular complications.",
+      mission_text:
+        "To reduce the burden of hypertension in Nigeria by raising awareness, promoting preventive lifestyles, and enhancing access to care through community-driven initiatives, supporting the Renewed Hope Agenda’s vision for a healthier Nigeria.",
+      motto_text: '"Healthy Living, Stronger Nigeria"',
+      contact_email: "hypertensionpreventionawareness@gmail.com",
+      contact_phone: "+234 806 547 9422, +234 901 371 3197",
+      contact_address:
+        "Block C 33 unity road phase 4 Military housing eastern Kurudu FCT Abuja Nigeria",
+      primary_color: "#e75c5c",
+      secondary_color: "#fff7ed",
+      text_color: "#1f2937",
+      accent_color: "#c2410c",
+      surface_color: "#ffffff",
+      font_family: "Source Sans 3",
+      font_size: 16,
+    };
+
+    // Directors data
+    const directors = [
+      {
+        id: 1,
+        image: "adeniyi_adebowale.jpg",
+        name: "Mr. Adebowale Adeniyi Oluwagbenga",
+        title:
+          "Chairman/CEO, Hypertension Prevention Awareness (HYPA) Visionary Leader & Healthcare Advocate",
+        bio: "Dr. Mitchell brings over 25 years of experience in international development and humanitarian work. Her leadership has guided the foundation through significant growth while maintaining our commitment to community-centered approaches.",
+        education:
+          "Ph.D. in International Development, Harvard University; M.A. in Public Policy, Georgetown University",
+        waed: "Former Director of UNICEF East Africa; Board Member, World Health Organization; Consultant, Gates Foundation",
+        skills: [
+          "Strategic Leadership",
+          "Policy Development",
+          "Fundraising",
+          "Stakeholder Management",
+        ],
+        impact:
+          "Led initiatives that have directly impacted over 2 million lives across 20 countries",
+      },
+      {
+        id: 2,
+        image: "chief_segun_obada.jpg",
+        name: "Chief Segun Obada",
+        title: "Vice Chairperson",
+        bio: "Michael is a serial entrepreneur and philanthropist dedicated to leveraging technology for social good. He founded three successful tech companies before joining our board.",
+        education:
+          "MBA, Stanford Graduate School of Business; B.S. Computer Science, MIT",
+        experience:
+          "Founder & CEO, TechForGood Inc.; Angel Investor; Former VP Engineering, Google",
+        skills: [
+          "Technology Strategy",
+          "Business Development",
+          "Impact Investing",
+        ],
+        impact:
+          "Pioneered digital literacy programs reaching 500,000+ students in underserved communities",
+      },
+      {
+        id: 3,
+        image: "david_anifowose.jpg",
+        name: "David Anifowose",
+        title: "Secretary",
+        bio: "Amara is an accomplished attorney specializing in nonprofit law and human rights advocacy. Her expertise ensures our foundation operates with the highest standards of governance.",
+        education:
+          "J.D., Yale Law School; LL.M. in Human Rights, Oxford University",
+        experience:
+          "Partner, Global Justice Law Firm; UN Human Rights Council Advisor; Legal Director, Amnesty International",
+        skills: [
+          "Legal Compliance",
+          "Governance",
+          "Human Rights Law",
+          "Contract Negotiation",
+        ],
+        impact:
+          "Established legal frameworks that protect the rights of displaced communities in 15 countries",
+      },
+      {
+        id: 4,
+        image: "martin_lateef_shehu.jpg",
+        name: "Martin Lateef Shehu",
+        title: "Treasurer",
+        bio: "James brings three decades of financial management experience from both corporate and nonprofit sectors. His financial acumen has strengthened our fiscal responsibility.",
+        education:
+          "CPA; M.S. Finance, Wharton School; B.A. Economics, Princeton University",
+        experience:
+          "CFO, International Relief Organization; Partner, Deloitte; Board Treasurer, Multiple Nonprofits",
+        skills: [
+          "Financial Management",
+          "Audit & Compliance",
+          "Budget Planning",
+          "Risk Assessment",
+        ],
+        impact:
+          "Implemented financial systems that increased donor transparency by 95%",
+      },
+      {
+        id: 5,
+        image: "mrs_kaliat_adeniyi.jpg",
+        name: "Mrs. Kaliat Adeniyi",
+        title: "Director of Programs",
+        bio: "Dr. Sharma is a renowned public health expert who has designed and implemented health programs across South Asia and Sub-Saharan Africa.",
+        education:
+          "M.D., Johns Hopkins School of Medicine; M.P.H., Harvard T.H. Chan School of Public Health",
+        experience:
+          "Chief Medical Officer, WHO South Asia; Director, Médecins Sans Frontières; Research Fellow, CDC",
+        skills: [
+          "Program Design",
+          "Health Systems",
+          "Community Health",
+          "Research & Evaluation",
+        ],
+        impact:
+          "Designed vaccination programs that protected over 10 million children from preventable diseases",
+      },
+      {
+        id: 6,
+        image: "mr_adeyemi_megbuwaon.jpg",
+        name: "Mr. Adeyemi Megbuwaon",
+        title: "Director of Operations",
+        bio: "Roberto specializes in scaling humanitarian operations in challenging environments. His logistics expertise has been crucial to our disaster response capabilities.",
+        education:
+          "M.A. Humanitarian Logistics, Cranfield University; B.Eng., Universidad Nacional Autónoma de México",
+        experience:
+          "Operations Director, Red Cross International; Supply Chain Lead, World Food Programme; Army Corps of Engineers",
+        skills: [
+          "Logistics",
+          "Disaster Response",
+          "Supply Chain",
+          "Crisis Management",
+        ],
+        impact:
+          "Coordinated relief efforts delivering aid to 3 million people affected by natural disasters",
+      },
+    ];
+
+    // Projects data
+    const projects = [
+      {
+        id: 1,
+        title: "Mobile Hypertension Screening and Education Campaign: ",
+        description:
+          "Deploy mobile units to screen Nigerians in underserved areas, gives free blood pressure medications, providing education on risk factors (e.g., high salt intake, physical inactivity) and linking patients to care.",
+        icon: "📚",
+        color: "from-blue-500 to-blue-600",
+      },
+      {
+        id: 2,
+        title: "Primary Healthcare Integration",
+        description:
+          "Train non-physician health workers in PHCs to implement WHO’s HEARTS protocol for hypertension management, ensuring affordable medications through drug revolving funds.",
+        icon: "💧",
+        color: "from-cyan-500 to-cyan-600",
+      },
+      {
+        id: 3,
+        title: "Youth and Lifestyle Program",
+        description:
+          "Engage students through school workshops promoting healthy diets, regular exercise, and avoidance of smoking and excessive alcohol.",
+        icon: "👩‍💼",
+        color: "from-purple-500 to-purple-600",
+      },
+      {
+        id: 4,
+        title: "Policy Advocacy",
+        description:
+          "Collaborate with the Federal Ministry of Health to advocate for policies like reduced salt content in processed foods, supporting the Renewed Hope Agenda’s focus on preventive health.",
+        icon: "🏥",
+        color: "from-red-500 to-red-600",
+      },
+      {
+        id: 5,
+        title: "Community Support Groups",
+        description:
+          "Establish peer-led support groups in communities to promote treatment adherence and self-management, including home blood pressure monitoring.",
+        icon: "🌱",
+        color: "from-green-500 to-green-600",
+      },
+    ];
+
+    // Partners data
+    const partners = [
+      {
+        name: "Federal Ministry of Health",
+        logo: "img.jpg",
+      },
+      {
+        name: "World Health Organization",
+        logo: "img.jpg",
+      },
+      {
+        name: "NCDC",
+        logo: "img.jpg",
+      },
+      {
+        name: "UNICEF",
+        logo: "img.jpg",
+      },
+      {
+        name: "Red Cross Nigeria",
+        logo: "img.jpg",
+      },
+    ];
+
+    // Render functions
+    function renderDirectors() {
+      const grid = document.getElementById("directors-grid");
+      grid.innerHTML = directors
+        .map(
+          (director) => `
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden director-card cursor-pointer" onclick="openDirectorModal(${director.id})">
           <img src="./${director.image ?? "img.jpg"}" alt="${director.name}" class="w-full object-cover"/>
           <!--div class="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
@@ -1644,15 +1173,15 @@
           </div>
         </div>
       `,
-          )
-          .join("");
-      }
+        )
+        .join("");
+    }
 
-      function renderProjects() {
-        const carousel = document.getElementById("projects-carousel");
-        carousel.innerHTML = projects
-          .map(
-            (project) => `
+    function renderProjects() {
+      const carousel = document.getElementById("projects-carousel");
+      carousel.innerHTML = projects
+        .map(
+          (project) => `
         <div class="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
           <div class="h-40 bg-gradient-to-br ${project.color} flex items-center justify-center">
             <span class="text-6xl">${project.icon}</span>
@@ -1669,16 +1198,16 @@
           </div>
         </div>
       `,
-          )
-          .join("");
-      }
+        )
+        .join("");
+    }
 
-      function openDirectorModal(id) {
-        const director = directors.find((d) => d.id === id);
-        if (!director) return;
+    function openDirectorModal(id) {
+      const director = directors.find((d) => d.id === id);
+      if (!director) return;
 
-        const modalContent = document.getElementById("modal-content");
-        modalContent.innerHTML = `
+      const modalContent = document.getElementById("modal-content");
+      modalContent.innerHTML = `
         <div class="text-center mb-6">
           <img src="./${director.image ?? "img.jpg"}" alt="${director.name}" class="w-full object-cover"/>
           <h2 class="font-heading text-2xl font-bold text-gray-800">${director.name}</h2>
@@ -1686,9 +1215,8 @@
         </div>
         
         <div class="space-y-6">
-          ${
-            director.bio
-              ? `
+          ${director.bio
+          ? `
             <div>
               <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
                 <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
@@ -1699,12 +1227,11 @@
               <p class="text-gray-600 leading-relaxed">${director.bio}</p>
             </div>
           `
-              : ""
-          }
+          : ""
+        }
           
-          ${
-            director.education
-              ? `
+          ${director.education
+          ? `
             <div>
               <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
                 <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
@@ -1715,12 +1242,11 @@
               <p class="text-gray-600">${director.education}</p>
             </div>
           `
-              : ""
-          }
+          : ""
+        }
           
-          ${
-            director.experience
-              ? `
+          ${director.experience
+          ? `
             <div>
               <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
                 <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
@@ -1731,12 +1257,11 @@
               <p class="text-gray-600">${director.experience}</p>
             </div>
           `
-              : ""
-          }
+          : ""
+        }
           
-          ${
-            director.skills && director.skills.length > 0
-              ? `
+          ${director.skills && director.skills.length > 0
+          ? `
             <div>
               <h3 class="font-semibold text-gray-800 mb-2 flex items-center gap-2">
                 <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
@@ -1746,21 +1271,20 @@
               </h3>
               <div class="flex flex-wrap gap-2">
                 ${director.skills
-                  .map(
-                    (skill) => `
+            .map(
+              (skill) => `
                   <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm">${skill}</span>
                 `,
-                  )
-                  .join("")}
+            )
+            .join("")}
               </div>
             </div>
           `
-              : ""
-          }
+          : ""
+        }
           
-          ${
-            director.impact
-              ? `
+          ${director.impact
+          ? `
             <div class="bg-red-50 rounded-xl p-4">
               <h3 class="font-semibold text-red-800 mb-2 flex items-center gap-2">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1771,121 +1295,121 @@
               <p class="text-red-700">${director.impact}</p>
             </div>
           `
-              : ""
-          }
+          : ""
+        }
         </div>
       `;
 
-        document.getElementById("director-modal").classList.remove("hidden");
-        document.body.style.overflow = "hidden";
+      document.getElementById("director-modal").classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeDirectorModal() {
+      document.getElementById("director-modal").classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+
+    function scrollCarousel(direction) {
+      const carousel = document.getElementById("projects-carousel");
+      const scrollAmount = 340;
+      carousel.scrollBy({
+        left: direction * scrollAmount,
+        behavior: "smooth",
+      });
+    }
+
+    function openCertificateModal(imageSrc, title) {
+      const modal = document.getElementById("certificate-modal");
+      const img = document.getElementById("certificate-image");
+      const heading = document.getElementById("certificate-title");
+
+      img.src = imageSrc;
+      img.alt = title;
+      heading.textContent = title;
+
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeCertificateModal() {
+      const modal = document.getElementById("certificate-modal");
+      modal.classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+
+    // Donation handling
+    let selectedAmount = 0;
+
+    function selectAmount(amount) {
+      selectedAmount = amount;
+      document.getElementById("custom-amount").value = amount;
+      document.querySelectorAll(".donation-btn").forEach((btn) => {
+        btn.classList.remove("bg-white/40");
+        btn.classList.add("bg-white/20");
+      });
+      event.target.classList.remove("bg-white/20");
+      event.target.classList.add("bg-white/40");
+    }
+
+    function handleDonate() {
+      const customAmount = document.getElementById("custom-amount").value;
+      const amount = customAmount || selectedAmount;
+      if (amount && amount > 0) {
+        document.getElementById("donate-success").classList.remove("hidden");
+        setTimeout(() => {
+          document.getElementById("donate-success").classList.add("hidden");
+        }, 3000);
       }
+    }
 
-      function closeDirectorModal() {
-        document.getElementById("director-modal").classList.add("hidden");
-        document.body.style.overflow = "";
-      }
-
-      function scrollCarousel(direction) {
-        const carousel = document.getElementById("projects-carousel");
-        const scrollAmount = 340;
-        carousel.scrollBy({
-          left: direction * scrollAmount,
-          behavior: "smooth",
-        });
-      }
-
-      function openCertificateModal(imageSrc, title) {
-        const modal = document.getElementById("certificate-modal");
-        const img = document.getElementById("certificate-image");
-        const heading = document.getElementById("certificate-title");
-
-        img.src = imageSrc;
-        img.alt = title;
-        heading.textContent = title;
-
-        modal.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeCertificateModal() {
-        const modal = document.getElementById("certificate-modal");
-        modal.classList.add("hidden");
-        document.body.style.overflow = "";
-      }
-
-      // Donation handling
-      let selectedAmount = 0;
-
-      function selectAmount(amount) {
-        selectedAmount = amount;
-        document.getElementById("custom-amount").value = amount;
-        document.querySelectorAll(".donation-btn").forEach((btn) => {
-          btn.classList.remove("bg-white/40");
-          btn.classList.add("bg-white/20");
-        });
-        event.target.classList.remove("bg-white/20");
-        event.target.classList.add("bg-white/40");
-      }
-
-      function handleDonate() {
-        const customAmount = document.getElementById("custom-amount").value;
-        const amount = customAmount || selectedAmount;
-        if (amount && amount > 0) {
-          document.getElementById("donate-success").classList.remove("hidden");
-          setTimeout(() => {
-            document.getElementById("donate-success").classList.add("hidden");
-          }, 3000);
-        }
-      }
-
-      // Mobile menu
-      document
-        .getElementById("mobile-menu-btn")
-        .addEventListener("click", () => {
-          document.getElementById("mobile-menu").classList.toggle("hidden");
-        });
-
-      // Form handlers
-      document
-        .getElementById("volunteer-form")
-        .addEventListener("submit", (e) => {
-          e.preventDefault();
-          document.getElementById("form-success").classList.remove("hidden");
-          e.target.reset();
-          setTimeout(() => {
-            document.getElementById("form-success").classList.add("hidden");
-          }, 4000);
-        });
-
-      document
-        .getElementById("newsletter-form")
-        .addEventListener("submit", (e) => {
-          e.preventDefault();
-          document
-            .getElementById("newsletter-success")
-            .classList.remove("hidden");
-          e.target.reset();
-          setTimeout(() => {
-            document
-              .getElementById("newsletter-success")
-              .classList.add("hidden");
-          }, 3000);
-        });
-
-      // Close modal on escape key
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeDirectorModal();
+    // Mobile menu
+    document
+      .getElementById("mobile-menu-btn")
+      .addEventListener("click", () => {
+        document.getElementById("mobile-menu").classList.toggle("hidden");
       });
 
-      const partnersGrid = document.getElementById("partners-grid");
+    // Form handlers
+    document
+      .getElementById("volunteer-form")
+      .addEventListener("submit", (e) => {
+        e.preventDefault();
+        document.getElementById("form-success").classList.remove("hidden");
+        e.target.reset();
+        setTimeout(() => {
+          document.getElementById("form-success").classList.add("hidden");
+        }, 4000);
+      });
 
-      if (partnersGrid) {
-        partners.forEach((partner) => {
-          const card = document.createElement("div");
-          card.className =
-            "bg-white rounded-xl shadow-md p-4 flex flex-col items-center justify-center card-hover grayscale hover:grayscale-0 transition-all";
+    document
+      .getElementById("newsletter-form")
+      .addEventListener("submit", (e) => {
+        e.preventDefault();
+        document
+          .getElementById("newsletter-success")
+          .classList.remove("hidden");
+        e.target.reset();
+        setTimeout(() => {
+          document
+            .getElementById("newsletter-success")
+            .classList.add("hidden");
+        }, 3000);
+      });
 
-          card.innerHTML = `
+    // Close modal on escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeDirectorModal();
+    });
+
+    const partnersGrid = document.getElementById("partners-grid");
+
+    if (partnersGrid) {
+      partners.forEach((partner) => {
+        const card = document.createElement("div");
+        card.className =
+          "bg-white rounded-xl shadow-md p-4 flex flex-col items-center justify-center card-hover grayscale hover:grayscale-0 transition-all";
+
+        card.innerHTML = `
             <img
               src="${partner.logo}"
               alt="${partner.name}"
@@ -1896,163 +1420,164 @@
             </div>
           `;
 
-          partnersGrid.appendChild(card);
-        });
-      }
+        partnersGrid.appendChild(card);
+      });
+    }
 
-      // Config change handler
-      async function onConfigChange(config) {
-        const orgName = config.org_name || defaultConfig.org_name;
-        const orgShortName =
-          config.org_name_short || defaultConfig.org_name_short;
-        const tagline = config.org_tagline || defaultConfig.org_tagline;
-        const vision = config.vision_text || defaultConfig.vision_text;
-        const mission = config.mission_text || defaultConfig.mission_text;
-        const motto = config.motto_text || defaultConfig.motto_text;
-        const email = config.contact_email || defaultConfig.contact_email;
-        const phone = config.contact_phone || defaultConfig.contact_phone;
-        const address = config.contact_address || defaultConfig.contact_address;
-        const primaryColor =
-          config.primary_color || defaultConfig.primary_color;
-        const fontFamily = config.font_family || defaultConfig.font_family;
-        const fontSize = config.font_size || defaultConfig.font_size;
+    // Config change handler
+    async function onConfigChange(config) {
+      const orgName = config.org_name || defaultConfig.org_name;
+      const orgShortName =
+        config.org_name_short || defaultConfig.org_name_short;
+      const tagline = config.org_tagline || defaultConfig.org_tagline;
+      const vision = config.vision_text || defaultConfig.vision_text;
+      const mission = config.mission_text || defaultConfig.mission_text;
+      const motto = config.motto_text || defaultConfig.motto_text;
+      const email = config.contact_email || defaultConfig.contact_email;
+      const phone = config.contact_phone || defaultConfig.contact_phone;
+      const address = config.contact_address || defaultConfig.contact_address;
+      const primaryColor =
+        config.primary_color || defaultConfig.primary_color;
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
 
-        // Update text content
-        document.getElementById("nav-org-name").textContent = orgShortName;
-        document.getElementById("hero-org-name").textContent = orgShortName;
-        document.getElementById("hero-tagline").textContent = tagline;
-        document.getElementById("vision-text").textContent = vision;
-        document.getElementById("mission-text").textContent = mission;
-        document.getElementById("motto-text").textContent = motto;
-        document.getElementById("footer-org-name").textContent = orgName;
-        document.getElementById("footer-email").textContent = email;
-        document.getElementById("footer-phone").textContent = phone;
-        document.getElementById("footer-address").innerHTML = address.replace(
-          /\n/g,
-          "<br>",
-        );
+      // Update text content
+      document.getElementById("nav-org-name").textContent = orgShortName;
+      document.getElementById("hero-org-name").textContent = orgShortName;
+      document.getElementById("hero-tagline").textContent = tagline;
+      document.getElementById("vision-text").textContent = vision;
+      document.getElementById("mission-text").textContent = mission;
+      document.getElementById("motto-text").textContent = motto;
+      document.getElementById("footer-org-name").textContent = orgName;
+      document.getElementById("footer-email").textContent = email;
+      document.getElementById("footer-phone").textContent = phone;
+      document.getElementById("footer-address").innerHTML = address.replace(
+        /\n/g,
+        "<br>",
+      );
 
-        // Update font
-        document.body.style.fontFamily = `${fontFamily}, system-ui, sans-serif`;
-        document.body.style.fontSize = `${fontSize}px`;
+      // Update font
+      document.body.style.fontFamily = `${fontFamily}, system-ui, sans-serif`;
+      document.body.style.fontSize = `${fontSize}px`;
 
-        // Update headings font
-        document.querySelectorAll(".font-heading").forEach((el) => {
-          el.style.fontFamily = `Playfair Display, ${fontFamily}, Georgia, serif`;
-        });
-      }
+      // Update headings font
+      document.querySelectorAll(".font-heading").forEach((el) => {
+        el.style.fontFamily = `Playfair Display, ${fontFamily}, Georgia, serif`;
+      });
+    }
 
-      // Element SDK initialization
-      if (window.elementSdk) {
-        window.elementSdk.init({
-          defaultConfig,
-          onConfigChange,
-          mapToCapabilities: (config) => ({
-            recolorables: [
-              {
-                get: () =>
-                  config.secondary_color || defaultConfig.secondary_color,
-                set: (value) =>
-                  window.elementSdk.setConfig({ secondary_color: value }),
-              },
-              {
-                get: () => config.surface_color || defaultConfig.surface_color,
-                set: (value) =>
-                  window.elementSdk.setConfig({ surface_color: value }),
-              },
-              {
-                get: () => config.text_color || defaultConfig.text_color,
-                set: (value) =>
-                  window.elementSdk.setConfig({ text_color: value }),
-              },
-              {
-                get: () => config.primary_color || defaultConfig.primary_color,
-                set: (value) =>
-                  window.elementSdk.setConfig({ primary_color: value }),
-              },
-              {
-                get: () => config.accent_color || defaultConfig.accent_color,
-                set: (value) =>
-                  window.elementSdk.setConfig({ accent_color: value }),
-              },
-            ],
-            borderables: [],
-            fontEditable: {
-              get: () => config.font_family || defaultConfig.font_family,
+    // Element SDK initialization
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () =>
+                config.secondary_color || defaultConfig.secondary_color,
               set: (value) =>
-                window.elementSdk.setConfig({ font_family: value }),
+                window.elementSdk.setConfig({ secondary_color: value }),
             },
-            fontSizeable: {
-              get: () => config.font_size || defaultConfig.font_size,
-              set: (value) => window.elementSdk.setConfig({ font_size: value }),
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) =>
+                window.elementSdk.setConfig({ surface_color: value }),
             },
-          }),
-          mapToEditPanelValues: (config) =>
-            new Map([
-              ["org_name", config.org_name || defaultConfig.org_name],
-              ["org_tagline", config.org_tagline || defaultConfig.org_tagline],
-              ["vision_text", config.vision_text || defaultConfig.vision_text],
-              [
-                "mission_text",
-                config.mission_text || defaultConfig.mission_text,
-              ],
-              ["motto_text", config.motto_text || defaultConfig.motto_text],
-              [
-                "contact_email",
-                config.contact_email || defaultConfig.contact_email,
-              ],
-              [
-                "contact_phone",
-                config.contact_phone || defaultConfig.contact_phone,
-              ],
-              [
-                "contact_address",
-                config.contact_address || defaultConfig.contact_address,
-              ],
-            ]),
-        });
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) =>
+                window.elementSdk.setConfig({ text_color: value }),
+            },
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) =>
+                window.elementSdk.setConfig({ primary_color: value }),
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) =>
+                window.elementSdk.setConfig({ accent_color: value }),
+            },
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) =>
+              window.elementSdk.setConfig({ font_family: value }),
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => window.elementSdk.setConfig({ font_size: value }),
+          },
+        }),
+        mapToEditPanelValues: (config) =>
+          new Map([
+            ["org_name", config.org_name || defaultConfig.org_name],
+            ["org_tagline", config.org_tagline || defaultConfig.org_tagline],
+            ["vision_text", config.vision_text || defaultConfig.vision_text],
+            [
+              "mission_text",
+              config.mission_text || defaultConfig.mission_text,
+            ],
+            ["motto_text", config.motto_text || defaultConfig.motto_text],
+            [
+              "contact_email",
+              config.contact_email || defaultConfig.contact_email,
+            ],
+            [
+              "contact_phone",
+              config.contact_phone || defaultConfig.contact_phone,
+            ],
+            [
+              "contact_address",
+              config.contact_address || defaultConfig.contact_address,
+            ],
+          ]),
+      });
+    }
+
+    // Initial render
+    renderDirectors();
+    renderProjects();
+    onConfigChange(defaultConfig);
+  </script>
+
+  <script>
+    (function () {
+      function c() {
+        var b = a.contentDocument || a.contentWindow.document;
+        if (b) {
+          var d = b.createElement("script");
+          d.innerHTML =
+            "window.__CF$cv$params={r:'9c22e7a923f5ef15',t:'MTc2OTEyNTMxNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+          b.getElementsByTagName("head")[0].appendChild(d);
+        }
       }
-
-      // Initial render
-      renderDirectors();
-      renderProjects();
-      onConfigChange(defaultConfig);
-    </script>
-
-    <script>
-      (function () {
-        function c() {
-          var b = a.contentDocument || a.contentWindow.document;
-          if (b) {
-            var d = b.createElement("script");
-            d.innerHTML =
-              "window.__CF$cv$params={r:'9c22e7a923f5ef15',t:'MTc2OTEyNTMxNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
-            b.getElementsByTagName("head")[0].appendChild(d);
-          }
+      if (document.body) {
+        var a = document.createElement("iframe");
+        a.height = 1;
+        a.width = 1;
+        a.style.position = "absolute";
+        a.style.top = 0;
+        a.style.left = 0;
+        a.style.border = "none";
+        a.style.visibility = "hidden";
+        document.body.appendChild(a);
+        if ("loading" !== document.readyState) c();
+        else if (window.addEventListener)
+          document.addEventListener("DOMContentLoaded", c);
+        else {
+          var e = document.onreadystatechange || function () { };
+          document.onreadystatechange = function (b) {
+            e(b);
+            "loading" !== document.readyState &&
+              ((document.onreadystatechange = e), c());
+          };
         }
-        if (document.body) {
-          var a = document.createElement("iframe");
-          a.height = 1;
-          a.width = 1;
-          a.style.position = "absolute";
-          a.style.top = 0;
-          a.style.left = 0;
-          a.style.border = "none";
-          a.style.visibility = "hidden";
-          document.body.appendChild(a);
-          if ("loading" !== document.readyState) c();
-          else if (window.addEventListener)
-            document.addEventListener("DOMContentLoaded", c);
-          else {
-            var e = document.onreadystatechange || function () {};
-            document.onreadystatechange = function (b) {
-              e(b);
-              "loading" !== document.readyState &&
-                ((document.onreadystatechange = e), c());
-            };
-          }
-        }
-      })();
-    </script>
-  </body>
+      }
+    })();
+  </script>
+</body>
+
 </html>
