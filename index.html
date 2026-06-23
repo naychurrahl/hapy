@@ -1152,7 +1152,7 @@
         .map(
           (director) => `
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden director-card cursor-pointer" onclick="openDirectorModal(${director.id})">
-          <img src="./media/photo/${director.image}"  ?? "/media/img.jpg" alt="${director.name}" class="w-full object-cover"/>
+          <img src="media/photo/${director.image}"  ?? "media/img.jpg" alt="${director.name}" class="w-full aspect-[3/4] object-cover"/>
           <!--div class="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
             <!- -div class="w-28 h-28 rounded-full bg-gradient-to-br from-red-400 to-red-500 flex items-center justify-center text-white text-4xl font-heading font-bold shadow-lg">
             </div- ->
