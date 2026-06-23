@@ -494,18 +494,19 @@
 
     <!-- Director Modal -->
     <div id="director-modal" class="fixed inset-0 z-50 hidden">
-      <div class="modal-backdrop absolute inset-0" onclick="closeDirectorModal()"></div>
-      <div class="relative h-full flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90%] overflow-auto animate-fade-in">
-          <div class="relative">
-            <button onclick="closeDirectorModal()"
-              class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center z-10 hover:bg-gray-100 transition-colors">
-              <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            <div id="modal-content" class="p-8">
-              <!-- Modal content will be rendered here -->
+      <div class="modal-backdrop absolute inset-0" onclick="closeDirectorModal()">
+        <div class="relative h-full flex items-center justify-center p-4">
+          <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90%] overflow-auto animate-fade-in">
+            <div class="relative">
+              <button onclick="closeDirectorModal()"
+                class="absolute top-4 right-4 w-10 h-10 bg-white rounded-3xl shadow-lg flex items-center justify-center z-10 hover:bg-gray-100 transition-colors">
+                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <div id="modal-content" class="p-8">
+                <!-- Modal content will be rendered here -->
+              </div>
             </div>
           </div>
         </div>
@@ -1206,7 +1207,7 @@
       const modalContent = document.getElementById("modal-content");
       modalContent.innerHTML = `
         <div class="text-center mb-6">
-          <img src="./media/${director.image ?? "img.jpg"}" alt="${director.name}" class="w-full object-cover"/>
+          <img src="media/photo/${director.image}"  ?? "media/img.jpg" alt="${director.name}" class="w-full aspect-[3/4] object-cover rounded-3xl shadow-lg"/>
           <h2 class="font-heading text-2xl font-bold text-gray-800">${director.name}</h2>
           <p class="text-red-600 font-semibold">${director.title}</p>
         </div>
