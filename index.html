@@ -336,7 +336,7 @@
               "Healthy Living, Stronger Nigeria"
             </p>
           </div>
-          
+
           <!-- Our Mission -->
           <div
             class="bg-white rounded-2xl shadow-lg p-8 card-hover border-t-4 border-red-400 flex flex-col gap-2 items-center justify-center">
@@ -487,15 +487,20 @@
     <section id="leadership" class="py-20 px-4 bg-white/50">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-12">
+          
           <span class="text-red-600 font-semibold uppercase tracking-wider text-sm">Meet Our Team</span>
+          
           <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 mt-2">
             Board of Directors
           </h2>
+
           <p class="text-gray-600 mt-3 max-w-2xl mx-auto">
             Dedicated leaders bringing decades of experience in humanitarian
             work, business, and community development.
           </p>
+
         </div>
+
         <div id="directors-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Directors will be rendered here -->
         </div>
@@ -596,24 +601,9 @@
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div class="bg-white rounded-2xl shadow-lg p-6 card-hover cursor-pointer" onclick="
-                openCertificateModal('img.jpg', 'Certificate of Registration')
-              ">
-            <img src="img.jpg" alt="HYPA Certificate 1" class="rounded-xl w-full object-contain" />
-            <p class="text-center text-gray-600 mt-4 font-medium">
-              Certificate of Registration
-            </p>
-          </div>
-
-          <div class="bg-white rounded-2xl shadow-lg p-6 card-hover cursor-pointer" onclick="
-                openCertificateModal('img.jpg', 'Certificate of Registration')
-              ">
-            <img src="img.jpg" alt="HYPA Certificate 2" class="rounded-xl w-full object-contain" />
-            <p class="text-center text-gray-600 mt-4 font-medium">
-              Health Advocacy Accreditation
-            </p>
-          </div>
+        <!-- Certificates Grid -->
+        <div id="cert-grid" class="grid gap-8 max-w-4xl mx-auto [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))]">
+          <!-- Certificates will be rendered here -->
         </div>
       </div>
     </section>
@@ -637,7 +627,7 @@
         </div>
 
         <div id="partners-grid"
-          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center items-stretch">
           <!-- Partners rendered via JS -->
         </div>
       </div>
@@ -1127,35 +1117,57 @@
     // Partners data
     const partners = [
       {
-        name: "Federal Ministry of Health",
-        logo: "img.jpg",
+        name: "Federal Ministry of Health & Social Welfare",
+        logo: "./media/partners/fmohsw.png",
       },
       {
-        name: "World Health Organization",
-        logo: "img.jpg",
+        name: "National Agency for the Control of AIDS (NACA)",
+        logo: "./media/partners/naca.png",
       },
       {
-        name: "NCDC",
-        logo: "img.jpg",
+        name: "National Insurance Commission (NAICOM)",
+        logo: "./media/partners/naicom.png",
       },
       {
-        name: "UNICEF",
-        logo: "img.jpg",
+        name: "National Orientation Agency (NOA)",
+        logo: "./media/partners/noa.png",
       },
       {
-        name: "Red Cross Nigeria",
-        logo: "img.jpg",
+        name: "Federal Ministry of Budget and Economic Planning (FMBEP)",
+        logo: "./media/partners/fmobep.png",
+      },
+      {
+        name: "Central Bank of Nigeria (CBN)",
+        logo: "./media/partners/cbn.png",
+      },
+    ];
+
+    //Certifications data
+    const certifications = [
+      {
+        name: "Certificate of Incorporation",
+        logo: "./media/cert/hypa_cac.jpg",
+      },
+      {
+        name: "SCUML",
+        logo: "./media/cert/hypa_scuml_cert.jpg",
+      },
+      {
+        name: "Certificate of Taxpayer Identification Number (TIN)",
+        logo: "./media/cert/hypa_tax_cert.jpg",
       },
     ];
 
     // Render functions
     function renderDirectors() {
+      
       const grid = document.getElementById("directors-grid");
+      
       grid.innerHTML = directors
         .map(
           (director) => `
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden director-card cursor-pointer" onclick="openDirectorModal(${director.id})">
-          <img src="./${director.image ?? "img.jpg"}" alt="${director.name}" class="w-full object-cover"/>
+          <img src="./media/photo/${director.image}"  ?? "/media/img.jpg" alt="${director.name}" class="w-full object-cover"/>
           <!--div class="h-48 bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center">
             <!- -div class="w-28 h-28 rounded-full bg-gradient-to-br from-red-400 to-red-500 flex items-center justify-center text-white text-4xl font-heading font-bold shadow-lg">
             </div- ->
@@ -1209,7 +1221,7 @@
       const modalContent = document.getElementById("modal-content");
       modalContent.innerHTML = `
         <div class="text-center mb-6">
-          <img src="./${director.image ?? "img.jpg"}" alt="${director.name}" class="w-full object-cover"/>
+          <img src="./media/${director.image ?? "img.jpg"}" alt="${director.name}" class="w-full object-cover"/>
           <h2 class="font-heading text-2xl font-bold text-gray-800">${director.name}</h2>
           <p class="text-red-600 font-semibold">${director.title}</p>
         </div>
@@ -1406,9 +1418,7 @@
     if (partnersGrid) {
       partners.forEach((partner) => {
         const card = document.createElement("div");
-        card.className =
-          "bg-white rounded-xl shadow-md p-4 flex flex-col items-center justify-center card-hover grayscale hover:grayscale-0 transition-all";
-
+        card.className = "bg-white rounded-xl shadow-md p-4 flex flex-col items-center justify-center card-hover grayscale hover:grayscale-0 transition-all h-full";
         card.innerHTML = `
             <img
               src="${partner.logo}"
@@ -1421,6 +1431,32 @@
           `;
 
         partnersGrid.appendChild(card);
+      });
+    }
+
+    const certGrid = document.getElementById("cert-grid");
+
+    if (certGrid) {
+      certifications.forEach((cert) => {
+        const card = document.createElement("div");
+        card.className = "bg-white rounded-2xl shadow-lg p-6 card-hover cursor-pointer flex flex-col items-center justify-center h-full";
+
+        card.onclick = () => {
+          openCertificateModal(cert.logo, cert.name);
+        };
+
+        card.innerHTML = `
+            <img
+              src="${cert.logo}"
+              alt="${cert.name}"
+              class="h-16 object-contain mb-3 rounded-xl"
+            />
+            <p class="text-center text-gray-600 mt-4 font-medium">
+              ${cert.name}
+            </p>
+          `;
+
+        certGrid.appendChild(card);
       });
     }
 
