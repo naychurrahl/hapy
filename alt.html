@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="en" class="h-full">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYPA Nigeria — Company Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/media/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/media/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/media/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/media/favicon/site.webmanifest">
+
+  <style>
+    :root {
+      --red-50: #fef2f2;
+      --red-100: #fee2e2;
+      --red-400: #f87171;
+      --red-500: #ef4444;
+      --red-600: #dc2626;
+      --red-700: #b91c1c;
+      --red-800: #991b1b;
+      --primary: #e75c5c;
+      --secondary: #fff7ed;
+      --text: #1f2937;
+      --accent: #c2410c;
+      --surface: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      color: var(--text);
+      background: var(--surface);
+    }
+
+    .font-heading {
+      font-family: "Playfair Display", Georgia, serif;
+    }
+
+    .font-body {
+      font-family: "Source Sans 3", system-ui, sans-serif;
+    }
+
+    .numeral-watermark {
+      font-family: "Playfair Display", Georgia, serif;
+      color: var(--red-100);
+      -webkit-text-stroke: 1px var(--red-100);
+    }
+
+    .surface-band {
+      background: var(--secondary);
+    }
+
+    .rail-dot.active {
+      background: var(--red-600);
+      color: #fff;
+    }
+
+    .timeline-marker::before {
+      content: "";
+      position: absolute;
+      left: 0.5rem;
+      top: 2rem;
+      bottom: -2rem;
+      width: 2px;
+      background: var(--red-100);
+    }
+
+    .timeline-item:last-child .timeline-marker::before {
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--red-100);
+      border-radius: 999px;
+    }
+  </style>
+</head>
+
+<body class="h-full font-body">
+
+  <div id="scroll-progress" class="fixed top-0 left-0 h-1 z-[60]"
+    style="width:0%; background:linear-gradient(90deg,var(--red-500),var(--red-700));"></div>
+
+  <header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-sm border-b border-red-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#cover" class="flex items-center gap-3">
+        <img src="media/hypa_logo.jpeg" alt="HYPA logo" class="w-9 h-9 rounded-full object-cover" />
+        <span id="header-name" class="font-heading text-lg font-semibold text-gray-800"></span>
+      </a>
+      <div class="flex items-center gap-3">
+        <a href="#contact"
+          class="hidden sm:inline-flex text-white text-sm font-medium px-5 py-2 rounded-full"
+          style="background:linear-gradient(135deg,var(--red-600),var(--red-700));">Partner With Us</a>
+        <button id="drawer-toggle" class="lg:hidden p-2 text-gray-600 hover:text-red-600" aria-label="Open menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav id="side-rail" class="hidden lg:flex flex-col gap-3 fixed left-6 top-1/2 -translate-y-1/2 z-40"></nav>
+
+  <div id="mobile-drawer" class="fixed inset-0 z-[70] bg-white hidden flex-col p-8">
+    <div class="flex justify-end">
+      <button id="drawer-close" class="p-2 text-gray-500 hover:text-red-600" aria-label="Close menu">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-drawer-links" class="flex flex-col gap-6 mt-8"></div>
+  </div>
+
+  <main class="pt-16">
+    <section id="cover" class="relative min-h-[90vh] flex items-center px-4 overflow-hidden"
+      style="background:linear-gradient(150deg,var(--red-50) 0%,var(--secondary) 55%,#ffffff 100%);">
+      <div id="cover-content" class="max-w-5xl mx-auto w-full py-16 relative"></div>
+    </section>
+
+    <section id="intro" class="relative py-24 px-4">
+      <div id="intro-content" class="max-w-5xl mx-auto"></div>
+    </section>
+
+    <section id="vision" class="relative py-24 px-4 surface-band">
+      <div id="vision-content" class="max-w-5xl mx-auto"></div>
+    </section>
+
+    <section id="values" class="relative py-24 px-4">
+      <div id="values-content" class="max-w-5xl mx-auto"></div>
+    </section>
+
+    <section id="achievements" class="relative py-24 px-4 surface-band">
+      <div id="achievements-content" class="max-w-4xl mx-auto"></div>
+    </section>
+
+    <section id="leadership" class="relative py-24 px-4">
+      <div id="leadership-content" class="max-w-6xl mx-auto"></div>
+    </section>
+
+    <section id="contact" class="relative py-24 px-4 surface-band">
+      <div id="contact-content" class="max-w-5xl mx-auto"></div>
+    </section>
+  </main>
+
+  <div id="director-modal" class="fixed inset-0 z-[80] hidden">
+    <div class="absolute inset-0" style="background:rgba(31,41,55,.7);backdrop-filter:blur(4px);"
+      onclick="closeDirectorModal()"></div>
+    <div class="relative h-full flex items-center justify-center p-4">
+      <div class="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90%] overflow-auto reveal">
+        <div class="relative">
+          <button onclick="closeDirectorModal()"
+            class="absolute top-4 right-4 w-10 h-10 rounded-full shadow-lg flex items-center justify-center z-10 text-white hover:opacity-90"
+            style="background:var(--red-600);">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <div id="director-modal-content"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cert-modal" class="fixed inset-0 z-[80] hidden">
+    <div class="absolute inset-0" style="background:rgba(31,41,55,.7);backdrop-filter:blur(4px);"
+      onclick="closeCertModal()"></div>
+    <div class="relative h-full flex items-center justify-center p-4">
+      <div class="relative bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[95%] overflow-auto reveal">
+        <button onclick="closeCertModal()"
+          class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 z-10">✕</button>
+        <div class="p-6 text-center">
+          <h3 id="cert-modal-title" class="font-heading text-2xl font-semibold text-gray-800 mb-4"></h3>
+          <img id="cert-modal-image" src="" alt="" class="mx-auto max-h-[75vh] object-contain rounded-xl" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="py-10 px-4 text-center text-sm text-gray-400 border-t border-red-50">
+    <p id="footer-line"></p>
+  </footer>
+
+  <script>
+    // ---------------------------------------------------------------------
+    // Data — every piece of mutable content lives here. Markup above is a
+    // structural shell; each render function fills its container from this.
+    // ---------------------------------------------------------------------
+
+    const site = {
+      legalName: "Hypertension Awareness and Prevention Initiative (HYPA) Nigeria",
+      shortName: "HYPA",
+      displayName: "HYPA Nigeria",
+      tagline: "Healthy Living, Stronger Nigeria",
+      registeredYear: 2025,
+      registrationNumbers: {
+        cac: "8694715",
+        scuml: "151424167",
+        tax: "1089012114",
+      },
+      contact: {
+        website: "http://www.hypa.com.ng",
+        email: "info@hypa.com.ng",
+        phones: ["08065479422", "09013713197"],
+        // The revised profile lists two different addresses (cover page vs.
+        // contact page). Keeping the address already published on the site
+        // until confirmed with the org — see index.html summary notes.
+        address: "Block C 33, Unity Road, Phase 4 Military Housing, Eastern Kurudu, FCT Abuja",
+      },
+    };
+
+    // Section index — drives the side rail, mobile drawer, and each
+    // section's numbered heading.
+    const sections = [
+      { id: "cover", number: "00", label: "Cover" },
+      { id: "intro", number: "01", label: "Introduction & Legal Status", eyebrow: "Introduction & Legal Status", title: "Who We Are" },
+      { id: "vision", number: "02", label: "Vision & Objectives", eyebrow: "Vision, Mission & Objectives", title: "Where We're Going" },
+      { id: "values", number: "03", label: "Values & Programs", eyebrow: "Core Values & Planned Programs", title: "How We Work" },
+      { id: "achievements", number: "04", label: "Achievements", eyebrow: "Key Achievements & Activities", title: "What We've Done" },
+      { id: "leadership", number: "05", label: "Leadership", eyebrow: "Leadership & Management Team", title: "Who Leads Us" },
+      { id: "contact", number: "06", label: "Partnership & Contact", eyebrow: "Target, Partnership & Contact", title: "Work With Us" },
+    ];
+
+    const introduction = {
+      paragraphs: [
+        "Hypertension Awareness and Prevention Initiative, operating as HYPA, is a Nigerian Non-Governmental Organization registered in 2025.",
+        "We are dedicated to combating hypertension, a silent killer affecting over 30% of Nigerian adults. HYPA is aligned with President Bola Tinubu's Renewed Hope Agenda on health: revitalizing primary healthcare, expanding access, and promoting healthy living.",
+        "We focus on closing Nigeria's hypertension gap through community-driven screening, education, and support.",
+      ],
+      gapStats: [
+        { label: "Awareness", value: "29%" },
+        { label: "Treatment", value: "12%" },
+        { label: "Control", value: "2.8%" },
+      ],
+      legalStatus: [
+        { name: "Corporate Affairs Commission (CAC)", status: "Registered NGO", regNo: "Reg No: 8694715" },
+        { name: "Federal Ministry of Health and Social Welfare", status: "Registered Health Initiative" },
+        { name: "Federal Ministry of Budget and Economic Planning", status: "Registered for National Development Programs" },
+        { name: "Special Control Unit Against Money Laundering (SCUML)", status: "Registered", regNo: "Reg No: 151424167" },
+        { name: "Tax Clearance Certificate", status: "Issued", regNo: "Certificate No: 1089012114" },
+        { name: "National Orientation Agency (NOA)", status: "Registered for community-based awareness campaign outreach" },
+      ],
+      certificates: [
+        { name: "Certificate of Incorporation", image: "media/cert/hypa_cac.jpg" },
+        { name: "SCUML Certificate", image: "media/cert/hypa_scuml_cert.jpg" },
+        { name: "Tax Clearance Certificate", image: "media/cert/hypa_tax_cert.jpg" },
+      ],
+    };
+
+    const visionMission = {
+      vision: "A Nigeria where every individual is aware of their blood pressure status, empowered to prevent hypertension, and supported to achieve long-term health, free from cardiovascular complications.",
+      mission: "To reduce the burden of hypertension in Nigeria by raising awareness, promoting preventive lifestyles, and enhancing access to care through community-driven initiatives.",
+      aim: "To empower Nigerians with the knowledge, tools, and access to prevent and manage hypertension.",
+      motto: "“Healthy Living, Stronger Nigeria”",
+      objectives: [
+        "To conduct campaigns and awareness in the 36 states of Nigeria including FCT.",
+        "To campaign for healthy lifestyle practices across all demographics.",
+        "To campaign for the control of high and low blood pressure in communities.",
+        "To reduce the risk of death caused by high/low blood pressure.",
+        "To conduct proper checkups and provide medication and BP machines for regular monitoring.",
+        "To partner with all State Governments to reduce risk of sudden death: Stroke, Cardiac arrest, Heart failure, Blindness, Erectile dysfunction.",
+        "To promote the Renewed Hope Agenda by advocating for healthy living.",
+      ],
+    };
+
+    const coreValues = [
+      { title: "Community Empowerment", description: "Communities own the prevention process." },
+      { title: "Health Equity", description: "Care regardless of income or location." },
+      { title: "Collaboration", description: "Partner with Government, PHCs, CSOs, and the Private Sector." },
+      { title: "Innovation", description: "Mobile health, data, and simple tools." },
+      { title: "Compassion", description: "A patient-first approach." },
+      { title: "Transparency and Accountability", description: "Ethical and measurable." },
+      { title: "Sustainability", description: "Programs that last." },
+    ];
+
+    const programs = [
+      { title: "Mobile Hypertension Screening and Education Campaign", icon: "🚐", description: "Deploy mobile units for free screening and free BP medications, with education on salt intake, inactivity, and stress. Links participants to Primary Healthcare Centres." },
+      { title: "Primary Healthcare Integration", icon: "🏥", description: "Train PHC workers on the WHO HEARTS protocol and support drug revolving funds for affordable medication." },
+      { title: "Youth and Lifestyle Program", icon: "🎓", description: "School workshops on healthy diets, regular exercise, and avoidance of smoking and excessive alcohol." },
+      { title: "Policy Advocacy", icon: "📜", description: "Work with the Federal Ministry of Health on salt reduction, front-of-pack labeling, and BHCPF inclusion." },
+      { title: "Community Support Groups", icon: "🤝", description: "Peer-led groups for treatment adherence and home blood pressure monitoring." },
+    ];
+
+    const achievements = [
+      {
+        title: "2-Day Hypertension Screening for Civil Servants — Abuja",
+        date: "World Hypertension Day 2025",
+        description: "HYPA conducted a 2-day free blood pressure screening and education campaign for Civil Servants in Abuja.",
+        partners: ["Federal Ministry of Health and Social Welfare", "NPHCDA", "WHO", "Resolve to Save Lives", "Hypertension Society of Nigeria", "University of Abuja Medical Departments", "Codix Pharma", "Clinton Health Access Initiative"],
+      },
+      {
+        title: "National Media Advocacy",
+        date: "May 17 — World Hypertension Day",
+        description: "Founder Mr. Adebowale Adeniyi Oluwagbenga, a stroke survivor, granted a live interview on NTA Weekend Deal to educate Nigerians on the prevention, control, treatment, and management of hypertension.",
+      },
+      {
+        title: "Faith-Based Community Outreach",
+        date: "20th Men's Anniversary",
+        description: "Conducted hypertension awareness and screening at C&S Church Movement, Kubwa, Abuja.",
+      },
+    ];
+
+    const executive = {
+      name: "Mr. Adebowale Adeniyi Oluwagbenga",
+      title: "Founder / CEO",
+      image: "media/photo/adeniyi_adebowale.jpg",
+      bio: "Visionary Leader & Healthcare Advocate, and stroke survivor. Over 15 years of insurance broking experience as Branch Manager at GN Bishop Insurance Brokers, Abbey Insurance Brokers, Linkage Assurance Plc, and Coleson Insurance Brokers.",
+      education: [
+        "B.Eng Agricultural Engineering, Federal University of Technology, Akure (FUTA)",
+        "Diploma in Occupational Health, Safety & Environment, NANFI, Namibia",
+      ],
+    };
+
+    const directors = [
+      {
+        id: 1, name: "Dr. Martin Shehu L.A", office: "Office of the Director, Medical Research Programme",
+        title: "Director, Medical Research Programme", image: "media/photo/martin_lateef_shehu.jpg",
+        bio: "MBBS, University of Ilorin (2012). MSc Medical Biochemistry, University of Abuja (in view). Former Chief Medical Director, Smart B Hospital. Former Clinical Head, St. Mary's Catholic Hospital, Gwagwalada (2015-2021). Intern, Military Hospital Yaba (2013).",
+        team: ["Manager, Research and Development", "Officer, Clinical Trials", "Officer, Data Analysis", "Executive, Research Assistant"],
+      },
+      {
+        id: 2, name: "Mr. Adeniyi Adeyemi", office: "Office of the Director, Procurement",
+        title: "Director, Procurement", image: "media/photo/mr_adeyemi_megbuwaon.jpg",
+        bio: "B.Sc Biochemistry, University of Lagos (1991/92). General Manager, Gilead Farm and Agro Allied Venture (2001-Present). Former Sales Manager, Bussay Noble Int'l (1993-1995).",
+        team: ["Manager, Procurement and Logistics", "Officer, Procurement Operations", "Officer, Contract Management", "Executive, Procurement Assistant"],
+      },
+      {
+        id: 3, name: "Chief Olorogun Segun Obada", office: "Office of the Director, Strategy and Planning",
+        title: "Director, Strategy and Planning", image: "media/photo/chief_segun_obada.jpg",
+        bio: "Accounting, Lagos State Polytechnic (1994). Banking & Finance, Osun State Polytechnic (1998). Former MD/CEO, Amoke Jemmy Enterprises. Former Marketing Director, GGIA Pharmaceuticals. Chairman, Sefinomy Consults.",
+        team: ["Manager, Strategic Planning", "Officer, Program Development", "Officer, Monitoring and Evaluation", "Executive, Planning Assistant"],
+      },
+      {
+        id: 4, name: "Mrs. Kaliat Adeniyi", office: "Office of the Director, Human Resources & Administration",
+        title: "Director, HR & Administration · Secretary of Trustees", image: "media/photo/mrs_kaliat_adeniyi.jpg",
+        bio: "HND Statistics (2007), ND Statistics (2004), Auchi Polytechnic. Experience across Leadway Insurance, Law Union and Rock Insurance (2016-2020), and Access Bank (2012-2014).",
+        team: ["Manager, Human Resources", "Officer, Recruitment and Talent Management", "Officer, Employee Relations", "Executive, HR Assistant", "Manager, Administration", "Officer, Facilities Management", "Officer, Logistics and Supply Chain"],
+      },
+      {
+        id: 5, name: "Mr. David Adetoro Anifowose", office: "Office of the Director, Advocacy & Awareness Communication",
+        title: "Director, Advocacy & Awareness Communication", image: "media/photo/david_anifowose.jpg",
+        bio: "B.Sc Business Education, TASUED (2021). Certified in Project Management and Investment Risk Management (Coursera). Former Business Development/KOI Manager, Bybit Africa. Former Technical Support, Go54.",
+        team: ["Manager, Communications and Public Relations", "Officer, Media Relations", "Officer, Social Media Management", "Executive, Communications Assistant", "Manager, Advocacy and Partnerships", "Officer, Stakeholder Engagement", "Officer, Policy and Advocacy"],
+      },
+      {
+        id: 6, name: "Mrs. Phibian Anjorin Dideolu", office: "Office of the Director, Finance and Accounts",
+        title: "Director, Finance and Accounts", image: "media/img.jpg",
+        bio: "HND Accounting, Federal Polytechnic Nasarawa (2015). Associate Member, ICAN. Former Finance & Admin Officer, M.A. Shittu Consulting (2019-2024). Former Compliance Officer, Access Bank (2017-2019).",
+        team: ["Manager, Financial Control", "Officer, Accounting and Budgeting", "Officer, Financial Reporting", "Executive, Finance Assistant"],
+      },
+    ];
+
+    const targetBeneficiaries = [
+      "Adults 18+", "Youths", "People living with hypertension",
+      "Primary Healthcare Centres (PHCs)", "State Ministries of Health",
+    ];
+
+    const partners = {
+      logoed: [
+        { name: "Federal Ministry of Health & Social Welfare", logo: "media/partners/fmohsw.png" },
+        { name: "National Agency for the Control of AIDS (NACA)", logo: "media/partners/naca.png" },
+        { name: "National Insurance Commission (NAICOM)", logo: "media/partners/naicom.png" },
+        { name: "National Orientation Agency (NOA)", logo: "media/partners/noa.png" },
+        { name: "Federal Ministry of Budget and Economic Planning (FMBEP)", logo: "media/partners/fmobep.png" },
+        { name: "Central Bank of Nigeria (CBN)", logo: "media/partners/cbn.png" },
+      ],
+      additional: [
+        "NPHCDA", "WHO", "Resolve to Save Lives", "Hypertension Society of Nigeria",
+        "University of Abuja", "Codix Pharma", "Clinton Health Access Initiative (CHAI)",
+        "Private Sector", "Media", "Faith-Based Organizations", "Community-Based Organizations",
+      ],
+    };
+
+    // ---------------------------------------------------------------------
+    // Helpers
+    // ---------------------------------------------------------------------
+
+    function sectionMeta(id) {
+      return sections.find((s) => s.id === id);
+    }
+
+    function sectionHeader(id, align) {
+      const meta = sectionMeta(id);
+      return `
+        <div class="relative mb-14 ${align === "center" ? "text-center" : ""}">
+          <span class="numeral-watermark text-7xl sm:text-8xl font-bold absolute -top-8 ${align === "center" ? "left-1/2 -translate-x-1/2" : "-left-2"
+        } select-none pointer-events-none" style="-webkit-text-fill-color:transparent;">${meta.number}</span>
+          <div class="relative pt-10">
+            <span class="text-sm font-semibold uppercase tracking-wider" style="color:var(--red-600);">${meta.eyebrow}</span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-800 mt-2">${meta.title}</h2>
+          </div>
+        </div>
+      `;
+    }
+
+    function imgWithFallback(src, alt, cls) {
+      return `<img src="${src}" alt="${alt}" class="${cls}" onerror="this.onerror=null;this.src='media/img.jpg';" />`;
+    }
+
+    // ---------------------------------------------------------------------
+    // Nav (side rail + mobile drawer + scroll progress + active-section spy)
+    // ---------------------------------------------------------------------
+
+    function renderNav() {
+      const rail = document.getElementById("side-rail");
+      rail.innerHTML = sections
+        .filter((s) => s.id !== "cover")
+        .map(
+          (s) => `
+        <a href="#${s.id}" data-rail="${s.id}"
+          class="rail-dot flex items-center gap-2 pl-1 pr-3 py-1 rounded-full text-xs font-medium bg-white/90 shadow text-gray-600 hover:text-red-600 transition-colors">
+          <span class="w-6 h-6 rounded-full flex items-center justify-center bg-red-50 text-[10px] font-heading">${s.number}</span>
+          <span class="hidden xl:inline">${s.label}</span>
+        </a>
+      `,
+        )
+        .join("");
+
+      const drawer = document.getElementById("mobile-drawer-links");
+      drawer.innerHTML = sections
+        .map(
+          (s) => `
+        <a href="#${s.id}" data-drawer="${s.id}" class="flex items-center gap-4 text-gray-700 hover:text-red-600">
+          <span class="font-heading text-2xl" style="color:var(--red-300, var(--red-400));">${s.number}</span>
+          <span class="text-xl font-medium">${s.label}</span>
+        </a>
+      `,
+        )
+        .join("");
+
+      drawer.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => toggleDrawer(false)),
+      );
+    }
+
+    function toggleDrawer(open) {
+      const drawer = document.getElementById("mobile-drawer");
+      drawer.classList.toggle("hidden", !open);
+      drawer.classList.toggle("flex", open);
+    }
+
+    function initScrollSpy() {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            document.querySelectorAll("[data-rail]").forEach((el) => {
+              el.classList.toggle("active", el.dataset.rail === entry.target.id);
+            });
+          });
+        },
+        { rootMargin: "-45% 0px -45% 0px" },
+      );
+      sections.forEach((s) => {
+        const el = document.getElementById(s.id);
+        if (el) observer.observe(el);
+      });
+    }
+
+    function updateProgressBar() {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      document.getElementById("scroll-progress").style.width = pct + "%";
+    }
+
+    // ---------------------------------------------------------------------
+    // Section renderers
+    // ---------------------------------------------------------------------
+
+    function renderCover() {
+      document.getElementById("header-name").textContent = site.displayName;
+      document.getElementById("cover-content").innerHTML = `
+        <span class="text-sm font-semibold uppercase tracking-wider" style="color:var(--red-600);">Company Profile · Registered ${site.registeredYear}</span>
+        <h1 class="font-heading text-4xl sm:text-6xl font-bold text-gray-800 mt-4 leading-tight">${site.legalName}</h1>
+        <p class="text-xl sm:text-2xl mt-4 font-medium" style="color:var(--red-700);">${visionMission.motto}</p>
+        <div class="flex flex-wrap gap-4 mt-10">
+          <a href="#leadership" class="text-white px-8 py-3 rounded-full font-semibold text-lg"
+            style="background:linear-gradient(135deg,var(--red-600),var(--red-700));">Meet the Team</a>
+          <a href="#contact" class="px-8 py-3 rounded-full font-semibold text-lg border-2"
+            style="color:var(--red-600);border-color:var(--red-500);">Get in Touch</a>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-4 mt-14 max-w-2xl">
+          <div class="bg-white/80 rounded-2xl p-4 shadow">
+            <div class="text-xs text-gray-500 uppercase tracking-wide">CAC Reg No</div>
+            <div class="font-heading text-lg text-gray-800">${site.registrationNumbers.cac}</div>
+          </div>
+          <div class="bg-white/80 rounded-2xl p-4 shadow">
+            <div class="text-xs text-gray-500 uppercase tracking-wide">SCUML Reg No</div>
+            <div class="font-heading text-lg text-gray-800">${site.registrationNumbers.scuml}</div>
+          </div>
+          <div class="bg-white/80 rounded-2xl p-4 shadow">
+            <div class="text-xs text-gray-500 uppercase tracking-wide">Tax Clearance No</div>
+            <div class="font-heading text-lg text-gray-800">${site.registrationNumbers.tax}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderIntro() {
+      document.getElementById("intro-content").innerHTML = `
+        ${sectionHeader("intro")}
+        <div class="grid lg:grid-cols-3 gap-10">
+          <div class="lg:col-span-2 space-y-4 text-gray-600 leading-relaxed">
+            ${introduction.paragraphs.map((p) => `<p>${p}</p>`).join("")}
+          </div>
+          <div class="grid grid-cols-3 lg:grid-cols-1 gap-4">
+            ${introduction.gapStats
+          .map(
+            (stat) => `
+              <div class="rounded-2xl p-4 text-center" style="background:var(--red-50);">
+                <div class="font-heading text-3xl font-bold" style="color:var(--red-600);">${stat.value}</div>
+                <div class="text-xs text-gray-500 uppercase tracking-wide mt-1">${stat.label}</div>
+              </div>
+            `,
+          )
+          .join("")}
+          </div>
+        </div>
+
+        <h3 class="font-heading text-xl font-semibold text-gray-800 mt-16 mb-6">Legal Status & Registrations</h3>
+        <div class="grid sm:grid-cols-2 gap-4">
+          ${introduction.legalStatus
+          .map(
+            (item) => `
+            <div class="flex items-start gap-3 bg-white rounded-xl p-4 shadow-sm border border-red-50">
+              <span class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:var(--red-100);color:var(--red-700);">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              </span>
+              <div>
+                <div class="font-medium text-gray-800 text-sm">${item.name}</div>
+                <div class="text-gray-500 text-xs mt-0.5">${item.status}${item.regNo ? " · " + item.regNo : ""}</div>
+              </div>
+            </div>
+          `,
+          )
+          .join("")}
+        </div>
+
+        <h3 class="font-heading text-xl font-semibold text-gray-800 mt-16 mb-6">Certificates on File</h3>
+        <div id="cert-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-6"></div>
+      `;
+
+      const certGrid = document.getElementById("cert-grid");
+      certGrid.innerHTML = introduction.certificates
+        .map(
+          (cert, i) => `
+        <button onclick="openCertModal(${i})" class="bg-white rounded-2xl shadow p-4 text-center hover:shadow-lg transition-shadow">
+          <img src="${cert.image}" alt="${cert.name}" class="h-32 w-full object-contain mb-3 rounded-lg" />
+          <div class="text-sm font-medium text-gray-700">${cert.name}</div>
+        </button>
+      `,
+        )
+        .join("");
+    }
+
+    function renderVision() {
+      const cards = [
+        { label: "Vision", text: visionMission.vision },
+        { label: "Mission", text: visionMission.mission },
+        { label: "Aim", text: visionMission.aim },
+        { label: "Motto", text: visionMission.motto },
+      ];
+      document.getElementById("vision-content").innerHTML = `
+        ${sectionHeader("vision")}
+        <div class="grid sm:grid-cols-2 gap-6 mb-16">
+          ${cards
+          .map(
+            (c) => `
+            <div class="bg-white rounded-2xl shadow-lg p-6 border-t-4" style="border-color:var(--red-400);">
+              <div class="text-xs font-semibold uppercase tracking-wide mb-2" style="color:var(--red-600);">${c.label}</div>
+              <p class="text-gray-600 leading-relaxed">${c.text}</p>
+            </div>
+          `,
+          )
+          .join("")}
+        </div>
+        <h3 class="font-heading text-xl font-semibold text-gray-800 mb-6">Objectives</h3>
+        <ol class="grid sm:grid-cols-2 gap-4">
+          ${visionMission.objectives
+          .map(
+            (obj, i) => `
+            <li class="flex items-start gap-3 bg-white rounded-xl p-4 shadow-sm">
+              <span class="font-heading text-xl font-bold flex-shrink-0" style="color:var(--red-300,var(--red-400));">${String(i + 1).padStart(2, "0")}</span>
+              <span class="text-gray-600 text-sm leading-relaxed">${obj}</span>
+            </li>
+          `,
+          )
+          .join("")}
+        </ol>
+      `;
+    }
+
+    function renderValues() {
+      document.getElementById("values-content").innerHTML = `
+        ${sectionHeader("values")}
+        <h3 class="font-heading text-xl font-semibold text-gray-800 mb-6">Core Values</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+          ${coreValues
+          .map(
+            (v) => `
+            <div class="rounded-xl p-5" style="background:var(--red-50);">
+              <div class="font-semibold" style="color:var(--red-700);">${v.title}</div>
+              <div class="text-gray-500 text-sm mt-1">${v.description}</div>
+            </div>
+          `,
+          )
+          .join("")}
+        </div>
+        <h3 class="font-heading text-xl font-semibold text-gray-800 mb-6">Planned Programs & Initiatives</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          ${programs
+          .map(
+            (p) => `
+            <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col gap-3">
+              <span class="text-4xl">${p.icon}</span>
+              <h4 class="font-heading text-lg font-semibold text-gray-800">${p.title}</h4>
+              <p class="text-gray-500 text-sm leading-relaxed">${p.description}</p>
+            </div>
+          `,
+          )
+          .join("")}
+        </div>
+      `;
+    }
+
+    function renderAchievements() {
+      document.getElementById("achievements-content").innerHTML = `
+        ${sectionHeader("achievements")}
+        <div class="space-y-10">
+          ${achievements
+          .map(
+            (a) => `
+            <div class="timeline-item relative pl-10">
+              <div class="timeline-marker absolute left-0 top-1 w-4 h-4 rounded-full" style="background:var(--red-600);"></div>
+              <div class="text-xs font-semibold uppercase tracking-wide" style="color:var(--red-600);">${a.date}</div>
+              <h4 class="font-heading text-xl font-semibold text-gray-800 mt-1">${a.title}</h4>
+              <p class="text-gray-600 mt-2 leading-relaxed">${a.description}</p>
+              ${a.partners
+                ? `<div class="flex flex-wrap gap-2 mt-4">
+                    ${a.partners
+                  .map(
+                    (p) => `<span class="text-xs px-3 py-1 rounded-full" style="background:var(--red-50);color:var(--red-700);">${p}</span>`,
+                  )
+                  .join("")}
+                  </div>`
+                : ""
+              }
+            </div>
+          `,
+          )
+          .join("")}
+        </div>
+      `;
+    }
+
+    function renderLeadership() {
+      document.getElementById("leadership-content").innerHTML = `
+        ${sectionHeader("leadership")}
+        <div class="bg-white rounded-3xl shadow-xl p-8 lg:p-10 mb-14 grid md:grid-cols-[200px_1fr] gap-8 items-center">
+          ${imgWithFallback(executive.image, executive.name, "w-full aspect-square object-cover rounded-2xl shadow-lg")}
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-wide" style="color:var(--red-600);">Executive Leadership</span>
+            <h3 class="font-heading text-2xl font-bold text-gray-800 mt-1">${executive.name}</h3>
+            <p class="font-medium" style="color:var(--red-700);">${executive.title}</p>
+            <p class="text-gray-600 text-sm leading-relaxed mt-3">${executive.bio}</p>
+          </div>
+        </div>
+
+        <h3 class="font-heading text-xl font-semibold text-gray-800 mb-6">Board of Directors</h3>
+        <div id="directors-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+      `;
+
+      document.getElementById("directors-grid").innerHTML = directors
+        .map(
+          (d) => `
+        <button onclick="openDirectorModal(${d.id})" class="bg-white rounded-2xl shadow-lg overflow-hidden text-left hover:shadow-xl transition-shadow">
+          ${imgWithFallback(d.image, d.name, "w-full aspect-[4/3] object-cover")}
+          <div class="p-5">
+            <h4 class="font-heading text-lg font-semibold text-gray-800">${d.name}</h4>
+            <p class="text-sm mt-1" style="color:var(--red-600);">${d.title}</p>
+          </div>
+        </button>
+      `,
+        )
+        .join("");
+    }
+
+    function openDirectorModal(id) {
+      const d = directors.find((x) => x.id === id);
+      if (!d) return;
+      document.getElementById("director-modal-content").innerHTML = `
+        <div class="grid md:grid-cols-[220px_1fr]">
+          ${imgWithFallback(d.image, d.name, "w-full h-64 md:h-full object-cover")}
+          <div class="p-8">
+            <span class="text-xs text-gray-400 uppercase tracking-wide">${d.office}</span>
+            <h3 class="font-heading text-2xl font-bold text-gray-800 mt-1">${d.name}</h3>
+            <p class="font-medium mb-4" style="color:var(--red-600);">${d.title}</p>
+            <p class="text-gray-600 text-sm leading-relaxed">${d.bio}</p>
+            <h4 class="font-semibold text-gray-800 mt-6 mb-2">Team</h4>
+            <ul class="grid sm:grid-cols-2 gap-1.5">
+              ${d.team.map((t) => `<li class="text-gray-500 text-sm flex items-start gap-2"><span style="color:var(--red-400);">•</span>${t}</li>`).join("")}
+            </ul>
+          </div>
+        </div>
+      `;
+      document.getElementById("director-modal").classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeDirectorModal() {
+      document.getElementById("director-modal").classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+
+    function openCertModal(index) {
+      const cert = introduction.certificates[index];
+      document.getElementById("cert-modal-title").textContent = cert.name;
+      const img = document.getElementById("cert-modal-image");
+      img.src = cert.image;
+      img.alt = cert.name;
+      document.getElementById("cert-modal").classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeCertModal() {
+      document.getElementById("cert-modal").classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+
+    function renderContact() {
+      document.getElementById("contact-content").innerHTML = `
+        ${sectionHeader("contact")}
+        <h3 class="font-heading text-xl font-semibold text-gray-800 mb-4">Who We Serve</h3>
+        <div class="flex flex-wrap gap-2 mb-16">
+          ${targetBeneficiaries
+          .map(
+            (b) => `<span class="text-sm px-4 py-2 rounded-full bg-white shadow-sm" style="color:var(--red-700);">${b}</span>`,
+          )
+          .join("")}
+        </div>
+
+        <h3 class="font-heading text-xl font-semibold text-gray-800 mb-6">Partnership & Collaboration</h3>
+        <div id="partners-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 items-stretch mb-6"></div>
+        <p class="text-gray-500 text-sm max-w-3xl mb-16">
+          We also collaborate with ${partners.additional.join(", ")}.
+        </p>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div class="rounded-3xl p-8 text-white" style="background:linear-gradient(135deg,var(--red-600),var(--red-800));">
+            <h3 class="font-heading text-2xl font-semibold mb-6">Contact Information</h3>
+            <div class="space-y-4 text-sm">
+              <div class="flex items-start gap-3"><span>📍</span><span>${site.contact.address}</span></div>
+              <div class="flex items-center gap-3"><span>📞</span><span>${site.contact.phones.join(", ")}</span></div>
+              <div class="flex items-center gap-3"><span>✉️</span><a href="mailto:${site.contact.email}" class="hover:underline">${site.contact.email}</a></div>
+              <div class="flex items-center gap-3"><span>🌐</span><a href="${site.contact.website}" class="hover:underline">${site.contact.website}</a></div>
+            </div>
+          </div>
+          <div class="bg-white rounded-3xl shadow-lg p-8 flex flex-col justify-center gap-4">
+            <h3 class="font-heading text-2xl font-semibold text-gray-800">Ready to work with HYPA?</h3>
+            <p class="text-gray-500 text-sm">Reach out to partner on screening campaigns, policy advocacy, or community outreach.</p>
+            <a href="mailto:${site.contact.email}" class="inline-flex justify-center text-white px-6 py-3 rounded-full font-semibold"
+              style="background:linear-gradient(135deg,var(--red-600),var(--red-700));">Email Us</a>
+          </div>
+        </div>
+      `;
+
+      document.getElementById("partners-grid").innerHTML = partners.logoed
+        .map(
+          (p) => `
+        <div class="bg-white rounded-xl shadow-md p-4 flex flex-col items-center justify-center grayscale hover:grayscale-0 transition-all">
+          <img src="${p.logo}" alt="${p.name}" class="h-12 object-contain mb-2" />
+          <div class="text-[11px] text-gray-500 text-center">${p.name}</div>
+        </div>
+      `,
+        )
+        .join("");
+    }
+
+    function renderFooter() {
+      document.getElementById("footer-line").textContent =
+        `© ${new Date().getFullYear()} ${site.displayName}. ${site.tagline}.`;
+    }
+
+    // ---------------------------------------------------------------------
+    // Init
+    // ---------------------------------------------------------------------
+
+    renderNav();
+    renderCover();
+    renderIntro();
+    renderVision();
+    renderValues();
+    renderAchievements();
+    renderLeadership();
+    renderContact();
+    renderFooter();
+    initScrollSpy();
+
+    window.addEventListener("scroll", updateProgressBar);
+    updateProgressBar();
+
+    document.getElementById("drawer-toggle").addEventListener("click", () => toggleDrawer(true));
+    document.getElementById("drawer-close").addEventListener("click", () => toggleDrawer(false));
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      closeDirectorModal();
+      closeCertModal();
+      toggleDrawer(false);
+    });
+  </script>
+</body>
+
+</html>
